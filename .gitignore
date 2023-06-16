@@ -1,0 +1,6 @@
+*/tmp-glibc/
+*/tmp/
+*/sstate-cache/
+*/cache/
+*/downloads/
+*.log

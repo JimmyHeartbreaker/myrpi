@@ -1,0 +1,33 @@
+{
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/*/**": true,
+        "**/.hg/store/**": true,
+        "**/build/cache/**":true,
+        "**/build/sstate-cache/**":true,
+        "**/build/tmp/**":true
+    },
+    "files.exclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/*/**": true,
+        "**/.hg/store/**": true,
+        "**/build/cache/**":true,
+        "**/build/sstate-cache/**":true,
+        "**/build/tmp/**":true
+    },
+    "search.exclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/*/**": true,
+        "**/.hg/store/**": true,
+        "**/build/cache/**":true,
+        "**/build/sstate-cache/**":true,
+        "**/build/tmp/**":true
+    },
+    
+    "bitbake.loggingLevel":"info",
+    "bitbake.generateWorkingFolder":false,
+    "bitbake.machine":"qemuarm64"
+}
