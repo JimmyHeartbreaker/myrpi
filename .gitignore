@@ -14,4 +14,3 @@
 *.o
 *.so
 *.a
-!/home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-app/.vscode/launch.json
