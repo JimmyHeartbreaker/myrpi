@@ -9,7 +9,7 @@ SRC_URI = "file://helloworld.c"
 S = "${WORKDIR}"
 do_compile() {
     
-    bbplain "${CC} ${CFLAGS} ${LDFLAGS} helloworld.c -o helloworld";
+    bbplain "${CC} ${CFLAGS} ${LDFLAGS} helloworld.c -o helloworld"
     
     ${CC} ${CFLAGS} ${LDFLAGS} helloworld.c -o helloworld
 }
@@ -19,8 +19,4 @@ do_install() {
     bbplain "install -m 0755 helloworld ${D}${bindir}";
     install -d ${D}${bindir}
     install -m 0755 helloworld ${D}${bindir}
-
-
-    install -d /home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-app/helloworld/debugfiles
-    install -m 0755 helloworld /home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-app/helloworld/debugfiles
 }
