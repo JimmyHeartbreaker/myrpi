@@ -1,23 +1,17 @@
-.data
-
-/* Data segment: define our message string and calculate its length. */
-msg:
-    .ascii        "Hello, ARM64!\n"
-len = . - msg
-
-.text
-
-/* Our application's entry point. */
-.globl _start
-_start:
-    /* syscall write(int fd, const void *buf, size_t count) */
-    mov     x0, #1      /* fd := STDOUT_FILENO */
-    ldr     x1, =msg    /* buf := msg */
-    ldr     x2, =len    /* count := len */
-    mov     w8, #64     /* write is syscall #64 */
-    svc     #0          /* invoke syscall */
-
-    /* syscall exit(int status) */
-    mov     x0, #0      /* status := 0 */
-    mov     w8, #93     /* exit is syscall #93 */
-    svc     #0          /* invoke syscall */
+    .global main                                                        // 1 
+main:                                                                   // 2 
+    stp     x21, x30, [sp, -16]!    // push onto stack                  // 3 
+    mov     x21, x1                 // argc -> x0, argv -> x1           // 4 
+                                                                        // 5 
+top:                                                                    // 6 
+    ldr     x0, [x21], 8            // argv++, old value in x0          // 7 
+    cbz     x0, bottom              // if *argv == NULL goto bottom     // 8 
+    bl      puts                    // puts(*argv)                      // 9 
+    b       top                     // goto top                         // 10 
+                                                                        // 11 
+bottom:                                                                 // 12 
+    ldp     x21, x30, [sp], 16      // pop from stack                   // 13 
+    mov     x0, xzr                 // return 0                         // 14 
+    ret                                                                 // 15 
+                                                                        // 16 
+    .end                                                                // 17 

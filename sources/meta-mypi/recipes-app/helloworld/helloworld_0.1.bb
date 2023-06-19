@@ -9,14 +9,14 @@ SRC_URI = "file://helloworld.c"
 S = "${WORKDIR}"
 do_compile() {
     
-    bbplain "${CC} ${CFLAGS} ${LDFLAGS} helloworld.c -o helloworld"
-    
+    bbplain "${CC} ${CFLAGS} ${LDFLAGS} helloworld.c -o helloworld"    
     ${CC} ${CFLAGS} ${LDFLAGS} helloworld.c -o helloworld
 }
 do_install() { 
 
-    bbplain "install -d ${D}${bindir}";
-    bbplain "install -m 0755 helloworld ${D}${bindir}";
     install -d ${D}${bindir}
+    bbplain "install -d ${D}${bindir}";
+
     install -m 0755 helloworld ${D}${bindir}
+    bbplain "install -m 0755 helloworld ${D}${bindir}";
 }
