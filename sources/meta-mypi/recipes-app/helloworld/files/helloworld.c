@@ -21,9 +21,3 @@ int main(void)
 
   printf("Results of %d + %d = %d\n", a, b, c);
 }
-
-//int main()
-//{
-//    printf("Hello world");
-//    return 0;
-//}
