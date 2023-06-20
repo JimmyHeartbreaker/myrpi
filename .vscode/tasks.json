@@ -3,9 +3,10 @@
         "label": "build_deploy",
         "command":"bash ${workspaceFolder}/build_deploy.sh ${fileBasenameNoExtension}",
         "type": "shell",
-        "promptOnClose": false,
+        "promptOnClose": false,    
         "presentation": {
-            "close": true
+            "close": true,
+            
         }
     }],
     "version": "2.0.0"
