@@ -27,3 +27,5 @@ do_install() {
     install -m 0755 helloworld-asm ${D}${bindir}
     bbplain "install -m 0755 helloworld-asm ${D}${bindir}"
 }
+
+FILES_${PN} += "${bindir}/helloworld-asm"

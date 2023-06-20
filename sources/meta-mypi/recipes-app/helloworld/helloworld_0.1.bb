@@ -20,3 +20,5 @@ do_install() {
     install -m 0755 helloworld ${D}${bindir}
     bbplain "install -m 0755 helloworld ${D}${bindir}";
 }
+
+FILES_${PN} += "${bindir}/helloworld"

@@ -2,6 +2,11 @@
 *
 # Unignore all with extensions
 !*.*
+!/sources/meta-mypi/recipes-app/helloworld-gtk/files
+!/sources/meta-mypi/recipes-app/helloworld-gtk/
+!/sources/meta-mypi/recipes-app/
+!/sources/meta-mypi/
+!/sources/
 */tmp-glibc/
 */tmp/
 */sstate-cache/
