@@ -1,7 +1,7 @@
 {
     "tasks": [{
         "label": "build_deploy",
-        "command":"bash ${workspaceFolder}/build_deploy.sh ${fileBasenameNoExtension} ${workspaceFolder}",
+        "command":"bash ${workspaceFolder}/build_deploy.sh ${fileBasenameNoExtension}",
         "type": "shell",
         "promptOnClose": false,
         "presentation": {
