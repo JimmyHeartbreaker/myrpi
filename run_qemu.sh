@@ -21,7 +21,10 @@ sudo qemu-system-aarch64 \
 	-object rng-random,filename=/dev/urandom,id=rng0 \
 	-device virtio-rng-pci,rng=rng0 \
 	-drive id=disk0,file=/home/jameshardaker/raspberryPi4/qemu-build/tmp-glibc/deploy/images/qemuarm64/mypi-qemu-image-qemuarm64.ext4,if=none,format=raw \
-	-device virtio-blk-pci,drive=disk0 -device qemu-xhci -device usb-tablet -device usb-kbd  \
+	-device virtio-blk-pci,drive=disk0 \
+	-device qemu-xhci \
+	-device usb-tablet \
+	-device usb-kbd  \
 	-machine virt \
 	-cpu cortex-a57 \
 	-smp 4 \
