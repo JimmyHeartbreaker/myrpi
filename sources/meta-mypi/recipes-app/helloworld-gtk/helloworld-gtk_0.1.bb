@@ -8,6 +8,8 @@ SRC_URI = "file://helloworld-gtk.c"
 
 S = "${WORKDIR}"
 
+inherit pkgconfig
+
 DEPENDS = "gtk+3"
 
 do_compile() {

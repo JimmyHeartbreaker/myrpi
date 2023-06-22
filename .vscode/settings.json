@@ -29,5 +29,9 @@
     
     "bitbake.loggingLevel":"info",
     "bitbake.generateWorkingFolder":false,
-    "bitbake.machine":"qemuarm64"
+    "bitbake.machine": "qemuarm64",
+    "cmake.configureOnOpen": false,
+    "C_Cpp.default.includePath": [
+        "/usr/include/gtk-3.0/gtk"
+    ],
 }

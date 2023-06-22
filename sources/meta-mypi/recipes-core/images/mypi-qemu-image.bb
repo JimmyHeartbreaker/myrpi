@@ -3,7 +3,7 @@ DESCRIPTION = "Recipe created by bitbake-layers"
 LICENSE = "MIT"
 
 # Base this image on core-image-base
-include recipes-core/images/core-image-base.bb
+include recipes-graphics/images/core-image-weston.bb
 
 python do_display_banner() {
     bb.plain("***********************************************");

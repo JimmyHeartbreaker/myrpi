@@ -1,6 +1,12 @@
 #include <gtk/gtk.h>
+#include <stdio.h>
+
 int main (int argc, char *argv[])
 {
+    int x= 1;
+    int y = x + 1;
+
+    printf("Helloworld\n");
     GtkWidget *window;// GtkWidget is the storage type for widgets
     gtk_init (&argc, &argv);// This is called in all GTK applications. Arguments are parsed
      			        //from the command line and are returned to the application.

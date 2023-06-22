@@ -1,13 +1,14 @@
 {
-    "tasks": [{
-        "label": "build_deploy",
-        "command":"bash ${workspaceFolder}/build_deploy.sh ${fileBasenameNoExtension}",
-        "type": "shell",
-        "promptOnClose": false,    
-        "presentation": {
-            "close": true,
-            
+    "tasks": [
+        {
+            "label": "build_deploy",
+            "command": "bash ${workspaceFolder}/build_deploy.sh ${fileBasenameNoExtension}",
+            "type": "shell",
+            "promptOnClose": false,
+            "presentation": {
+                "close": true
+            }
         }
-    }],
+    ],
     "version": "2.0.0"
 }
