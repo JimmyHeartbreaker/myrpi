@@ -34,4 +34,9 @@
     "C_Cpp.default.includePath": [
         "/usr/include/gtk-3.0/gtk"
     ],
+    "files.associations": {
+        "wayland-client-core.h": "c",
+        "wayland-client.h": "c",
+        "wayland-util.h": "c"
+    },
 }
