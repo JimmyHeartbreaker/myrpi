@@ -31,6 +31,7 @@ int main (int argc, char *argv[])
     window= (GtkWindow*)gtk_window_new(GTK_WINDOW_TOPLEVEL); 
     gtk_window_set_hide_titlebar_when_maximized (window,TRUE);
     gtk_window_maximize  (window);
+    gtk_window_set_decorated   (window,FALSE);
     g_signal_connect(
     G_OBJECT(window), 
     "delete_event", 
@@ -42,6 +43,7 @@ int main (int argc, char *argv[])
     "window-state-event", 
     G_CALLBACK(event_windowState), 
     NULL);
+
 
     gtk_widget_show((GtkWidget*)window);
     gtk_main (); 
