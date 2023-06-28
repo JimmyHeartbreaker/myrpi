@@ -1,0 +1,32 @@
+{
+	"folders": [
+		{
+			"path": ".",
+			
+		},
+		{
+			"path": "sources/meta-mypi/recipes-app/Starfield"		,
+			"name": "Starfield"	
+		}
+	],
+	"settings": {
+		"bitbake.loggingLevel": "info",
+		"bitbake.generateWorkingFolder": false,
+		"bitbake.machine": "qemuarm64",
+		"files.associations": {
+			"wayland-client-core.h": "c",
+			"wayland-client.h": "c",
+			"wayland-util.h": "c"
+		}
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "echo",
+				"type": "shell",
+				"command": "echo Hello"
+			}
+		]
+	}
+}

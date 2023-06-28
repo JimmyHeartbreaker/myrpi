@@ -1,9 +1,8 @@
 {
     "tasks": [
         {
-            
-            "label": "build_deploy",
-            "command": "bash ${workspaceFolder}/build_deploy.sh ${fileBasenameNoExtension}",
+            "label": "deploy_qemu",
+            "command": "bash ${workspaceFolder}/../../../../deploy_qemu.sh ${fileWorkspaceFolder}",
             "type": "shell",
             "promptOnClose": false,
             "presentation": {

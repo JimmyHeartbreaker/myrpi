@@ -1,0 +1,3 @@
+/home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-app/Starfield/build/CMakeFiles/Starfield.dir
+/home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-app/Starfield/build/CMakeFiles/edit_cache.dir
+/home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-app/Starfield/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-app/Starfield/build",
+  "command": "/usr/bin/aarch64-linux-gnu-g++-11 -g -o CMakeFiles/Starfield.dir/main.cpp.o -c /home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-app/Starfield/files/main.cpp",
+  "file": "/home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-app/Starfield/files/main.cpp"
+}
+]

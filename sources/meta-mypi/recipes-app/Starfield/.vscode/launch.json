@@ -1,11 +1,12 @@
 {
     "version": "0.2.0",
     "configurations": [
+
         {
-            "name": "remote target qemu",
+            "name": "debug qemu",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/qemu-build/tmp-glibc/work/cortexa57-oe-linux/${fileBasenameNoExtension}/0.1-r0/image/usr/bin/${fileBasenameNoExtension}",
+            "program": "${workspaceFolder}/build/${workspaceFolderBasename}",
             "args": [],
             "cwd": "${workspaceFolder}/${relativeFileDirname}",
             "environment": [],
@@ -24,8 +25,7 @@
                     "text": "-gdb-set disassembly-flavor intel",
                     "ignoreFailures": true
                 }
-            ],
-          //  "preLaunchTask": "build_deploy"
+            ]
         }
     ]
 }
