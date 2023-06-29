@@ -1,0 +1,3 @@
+/home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-app/helloworld-gtk/build/CMakeFiles/helloworld-gtk.dir
+/home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-app/helloworld-gtk/build/CMakeFiles/edit_cache.dir
+/home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-app/helloworld-gtk/build/CMakeFiles/rebuild_cache.dir

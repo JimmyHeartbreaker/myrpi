@@ -7,6 +7,10 @@
 		{
 			"path": "sources/meta-mypi/recipes-app/Starfield"		,
 			"name": "Starfield"	
+		},
+		{
+			"path": "sources/meta-mypi/recipes-app/helloworld-gtk"		,
+			"name": "helloworld-gtk"	
 		}
 	],
 	"settings": {

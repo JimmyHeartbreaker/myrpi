@@ -129,7 +129,7 @@ static void activate (GtkApplication *app,
   GtkWidget *drawing_area;
 
   window = gtk_application_window_new (app);
-  gtk_window_set_decorated   (window,FALSE);
+  //gtk_window_set_decorated   (window,FALSE);
 
   g_signal_connect (window, "destroy", G_CALLBACK (close_window), NULL);
 

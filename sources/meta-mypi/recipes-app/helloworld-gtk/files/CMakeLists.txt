@@ -1,4 +1,4 @@
-project(Starfield C CXX)
+project(helloworld-gtk C)
 set(CMAKE_SYSTEM_PROCESSOR aarch64)
 cmake_minimum_required(VERSION 3.0)
 #
@@ -6,15 +6,17 @@ set(LIBS cairo pixman fontconfig freetype directfb fusion direct libpng libxcb l
     libxau libxdmcp libdrm libxfixes libxxf86vm libxshmfence gtk+3 pango harfbuzz atk gdk-pixbuf gobject-introspection glib-2.0 libxrandr libxcursor systemd
     libxi libxcomposite libxdamage libatk-bridge libepoxy util-linux at-spi2-atk libxkbcommon wayland dbus libjpeg-turbo libpcre libffi fribidi at-spi2-core)
 SET(LIBROOT ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../qemu-build/tmp-glibc/sysroots-components/cortexa57)
+#find_package(PkgConfig REQUIRED)
+#pkg_check_modules(GTK REQUIRED gtk+-3.0)
 
 foreach(LIB IN LISTS LIBS)
 link_directories(${LIBROOT}/${LIB}/usr/lib)
 link_directories(${LIBROOT}/${LIB}/lib)
 endforeach()
-add_executable(Starfield main.cpp)
+add_executable(helloworld-gtk helloworld-gtk.c)
 
-target_link_libraries(Starfield PRIVATE ${GTK3_LIBRARIES})
-target_compile_options(Starfield PRIVATE
+target_link_libraries(helloworld-gtk PRIVATE cairo ${GTK3_LIBRARIES})
+target_compile_options(helloworld-gtk PRIVATE
         -I${LIBROOT}/gtk+3/usr/include/gtk-3.0/
         -I${LIBROOT}/glib/usr/include/gtk-3.0/
         -I${LIBROOT}/glib-2.0/usr/lib/glib-2.0/include/

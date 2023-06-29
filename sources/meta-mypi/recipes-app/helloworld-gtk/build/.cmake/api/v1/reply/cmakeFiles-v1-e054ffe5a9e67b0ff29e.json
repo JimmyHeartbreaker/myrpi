@@ -6,7 +6,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "/home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-app/Starfield/build/CMakeFiles/3.22.1/CMakeSystem.cmake"
+			"path" : "/home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-app/helloworld-gtk/build/CMakeFiles/3.22.1/CMakeSystem.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -15,11 +15,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "/home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-app/Starfield/build/CMakeFiles/3.22.1/CMakeCCompiler.cmake"
-		},
-		{
-			"isGenerated" : true,
-			"path" : "/home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-app/Starfield/build/CMakeFiles/3.22.1/CMakeCXXCompiler.cmake"
+			"path" : "/home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-app/helloworld-gtk/build/CMakeFiles/3.22.1/CMakeCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -85,48 +81,13 @@
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "/usr/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/usr/share/cmake-3.22/Modules/CMakeCXXInformation.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/usr/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/usr/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/usr/share/cmake-3.22/Modules/Compiler/GNU.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/usr/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/usr/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/usr/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake"
 		}
 	],
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-app/Starfield/build",
-		"source" : "/home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-app/Starfield/files"
+		"build" : "/home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-app/helloworld-gtk/build",
+		"source" : "/home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-app/helloworld-gtk/files"
 	},
 	"version" : 
 	{
