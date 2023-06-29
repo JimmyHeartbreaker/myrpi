@@ -1,6 +1,5 @@
 # Unignore all with extensions
 !*.*
-*/build/
 */tmp-glibc/
 */tmp/
 */sstate-cache/
@@ -13,4 +12,5 @@
 *.o
 *.so
 *.a
-*/build/*
+sources/meta-mypi/recipes-app/helloworld-gtk/build/*
+sources/meta-mypi/recipes-app/Starfield/build/*

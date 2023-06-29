@@ -1,7 +1,11 @@
+
 project(Starfield C CXX)
 set(CMAKE_SYSTEM_PROCESSOR aarch64)
-cmake_minimum_required(VERSION 3.0)
-#
+cmake_minimum_required(VERSION 3.10)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
+
+
 set(LIBS cairo pixman fontconfig freetype directfb fusion direct libpng libxcb libxrender libx11 libxext zlib libgl mesa expat util-linux-libuuid zstd libcap
     libxau libxdmcp libdrm libxfixes libxxf86vm libxshmfence gtk+3 pango harfbuzz atk gdk-pixbuf gobject-introspection glib-2.0 libxrandr libxcursor systemd
     libxi libxcomposite libxdamage libatk-bridge libepoxy util-linux at-spi2-atk libxkbcommon wayland dbus libjpeg-turbo libpcre libffi fribidi at-spi2-core)
@@ -11,10 +15,10 @@ foreach(LIB IN LISTS LIBS)
 link_directories(${LIBROOT}/${LIB}/usr/lib)
 link_directories(${LIBROOT}/${LIB}/lib)
 endforeach()
-add_executable(Starfield main.cpp)
+add_executable(${CMAKE_PROJECT_NAME} main.cpp)
 
-target_link_libraries(Starfield PRIVATE ${GTK3_LIBRARIES})
-target_compile_options(Starfield PRIVATE
+target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC cairo ${GTK3_LIBRARIES})
+target_compile_options(${CMAKE_PROJECT_NAME} PUBLIC
         -I${LIBROOT}/gtk+3/usr/include/gtk-3.0/
         -I${LIBROOT}/glib/usr/include/gtk-3.0/
         -I${LIBROOT}/glib-2.0/usr/lib/glib-2.0/include/

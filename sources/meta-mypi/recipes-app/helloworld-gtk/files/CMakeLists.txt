@@ -1,3 +1,4 @@
+
 project(helloworld-gtk C CXX)
 set(CMAKE_SYSTEM_PROCESSOR aarch64)
 cmake_minimum_required(VERSION 3.10)
@@ -14,10 +15,10 @@ foreach(LIB IN LISTS LIBS)
 link_directories(${LIBROOT}/${LIB}/usr/lib)
 link_directories(${LIBROOT}/${LIB}/lib)
 endforeach()
-add_executable(helloworld-gtk helloworld-gtk.c)
+add_executable(${CMAKE_PROJECT_NAME} helloworld-gtk.c)
 
-target_link_libraries(helloworld-gtk PUBLIC cairo ${GTK3_LIBRARIES})
-target_compile_options(helloworld-gtk PUBLIC
+target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC cairo ${GTK3_LIBRARIES})
+target_compile_options(${CMAKE_PROJECT_NAME} PUBLIC
         -I${LIBROOT}/gtk+3/usr/include/gtk-3.0/
         -I${LIBROOT}/glib/usr/include/gtk-3.0/
         -I${LIBROOT}/glib-2.0/usr/lib/glib-2.0/include/
