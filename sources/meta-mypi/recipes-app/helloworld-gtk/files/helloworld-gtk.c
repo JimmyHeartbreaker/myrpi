@@ -162,7 +162,8 @@ static void activate (GtkApplication *app,
                                      | GDK_BUTTON_PRESS_MASK
                                      | GDK_POINTER_MOTION_MASK);
 
-  gtk_widget_show_all (window);
+
+  gtk_widget_show_all (window); 
 }
 
 int main (int    argc,
@@ -175,6 +176,6 @@ int main (int    argc,
   g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
   status = g_application_run (G_APPLICATION (app), argc, argv);
   g_object_unref (app);
-
+ 
   return status;
 }
