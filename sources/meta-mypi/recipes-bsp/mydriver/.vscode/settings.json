@@ -1,0 +1,4 @@
+{
+    "C_Cpp.errorSquiggles": "disabled",
+    "cmake.sourceDirectory": "/home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-bsp/mydriver/files",
+}

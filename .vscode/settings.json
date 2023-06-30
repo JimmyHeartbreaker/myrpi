@@ -26,6 +26,8 @@
         "**/build/sstate-cache/**":true,
         "**/build/tmp/**":true
     },
+    "cmake.configureOnOpen": false,
+    "cmake.automaticReconfigure":false,
     
     "bitbake.loggingLevel":"info",
     "bitbake.generateWorkingFolder":false,
@@ -36,4 +38,5 @@
         "wayland-client.h": "c",
         "wayland-util.h": "c"
     },
+    "cmake.sourceDirectory": "/home/jameshardaker/raspberryPi4/qemu-build/tmp-glibc/sysroots-components/x86_64/cmake-native/usr/share/cmake-3.22/Modules/FortranCInterface",
 }

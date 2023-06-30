@@ -11,6 +11,10 @@
 		{
 			"path": "sources/meta-mypi/recipes-app/helloworld-gtk"		,
 			"name": "helloworld-gtk"	
+		},
+		{
+			"path": "sources/meta-mypi/recipes-bsp/mydriver"		,
+			"name": "mydriver"	
 		}
 	],
 	"settings": {
@@ -20,7 +24,8 @@
 		"files.associations": {
 			"wayland-client-core.h": "c",
 			"wayland-client.h": "c",
-			"wayland-util.h": "c"
+			"wayland-util.h": "c",
+			"module.h": "c"
 		}
 	},
 	"tasks": {

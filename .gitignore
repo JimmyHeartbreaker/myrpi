@@ -12,5 +12,6 @@
 *.o
 *.so
 *.a
-sources/meta-mypi/recipes-app/helloworld-gtk/build/*
-sources/meta-mypi/recipes-app/Starfield/build/*
+sources/meta-mypi/recipes-app/helloworld-gtk/build
+sources/meta-mypi/recipes-app/Starfield/build
+sources/meta-mypi/recipes-bsp/mydriver/build
