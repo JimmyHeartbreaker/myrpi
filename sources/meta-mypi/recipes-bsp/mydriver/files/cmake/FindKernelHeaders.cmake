@@ -8,16 +8,18 @@ execute_process(
 # Find the headers
 find_path(KERNELHEADERS_DIR
         include/linux/user.h
-        PATHS /usr/src/kernels/${KERNEL_RELEASE}
+        PATHS /home/jameshardaker/raspberryPi4/qemu-build/tmp-glibc/work-shared/qemuarm64/kernel-source/
+        NO_CMAKE_FIND_ROOT_PATH
         )
 
+SET(KERNELHEADERS_DIR /home/jameshardaker/raspberryPi4/qemu-build/tmp-glibc/work-shared/qemuarm64/kernel-build-artifacts/)
 message(STATUS "Kernel release: ${KERNEL_RELEASE}")
 message(STATUS "Kernel headers: ${KERNELHEADERS_DIR}")
 
 if (KERNELHEADERS_DIR)
     set(KERNELHEADERS_INCLUDE_DIRS
-            ${KERNELHEADERS_DIR}/include
-            ${KERNELHEADERS_DIR}/arch/x86/include
+    #    /home/jameshardaker/raspberryPi4/qemu-build/tmp-glibc/work-shared/qemuarm64/kernel-source/include/
+        /home/jameshardaker/raspberryPi4/qemu-build/tmp-glibc/work-shared/qemuarm64/kernel-source/arch/arm64/include/
             CACHE PATH "Kernel headers include dirs"
             )
     set(KERNELHEADERS_FOUND 1 CACHE STRING "Set to 1 if kernel headers were found")

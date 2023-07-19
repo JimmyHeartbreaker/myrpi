@@ -1,28 +1,20 @@
-DESCRIPTION = "Simple Driver example"
-PRIORITY = "optional"
+SUMMARY = "Simple Hello World Cmake application"
 SECTION = "examples"
-DEBUG_BUILD="1"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
-SRC_URI = "file://mydriver.c \
-           "
+INHIBIT_PACKAGE_STRIP = "1"
+SRC_URI = "\
+            file://CMakeLists.txt \
+            file://mydriver.c \
+            file://cmake/FindKernelHeaders.cmake \
+        "
 
 S = "${WORKDIR}"
 
-do_compile() {
-    
-    bbplain "${CC} ${CFLAGS} ${LDFLAGS} mydriver.c -o mydriver"    
-    ${CC} ${CFLAGS} ${LDFLAGS} mydriver.c -o mydriver
-}
-do_install() { 
+inherit module kernel-module-split cmake
 
-    bbplain "install -d ${D}${bindir}";
-    install -d ${D}${bindir}
+RPROVIDES:${PN} = "kernel-module-mydriver" 
+KERNEL_MODULE_AUTOLOAD += " mydriver "
+EXTRA_OECMAKE = ""
 
-    bbplain "install -m 0755 mydriver ${D}${bindir}";
-    install -m 0755 mydriver ${D}${bindir}
-
-}
-
-FILES:${PN} += "${bindir}/mydriver"
-RDEPENDS:${PN} += "bash"
+FILES:${PN} = "/usr/modules/mydriver.ko"
