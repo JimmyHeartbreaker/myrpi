@@ -7,7 +7,7 @@
             "name": "debug qemu",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/${workspaceFolderBasename}",
+            "program": "${workspaceFolder}/build/Default/${workspaceFolderBasename}",
             "args": [],
             "cwd": "${workspaceFolder}/${relativeFileDirname}",
             "environment": [],

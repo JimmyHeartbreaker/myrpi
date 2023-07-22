@@ -1,0 +1,40 @@
+{
+    "version": 4,
+    "configurePresets": [
+        {
+            "name": "Default",
+            "generator": "Ninja",
+            "displayName": "GCC 11.3.0 aarch64-oe-linux",
+            "description": "Cross compile with aarch64-oe-linux-gcc",
+            "binaryDir": "${sourceDir}/../build/${presetName}",
+            
+            
+            "cacheVariables": {
+                
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/../install/${presetName}",
+                "CMAKE_BUILD_TYPE": "Debug",       
+                "CMAKE_TOOLCHAIN_FILE": { "type": "PATH", "value": "${sourceDir}/../../../../../qemu-build/conf/CMakeToolChain.cmake" }         
+               
+
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            
+            "name": "DefaultBuild",
+            "description": "",
+            "displayName": "",
+            "configurePreset": "Default",
+            
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "DefaultTest",
+            "description": "",
+            "displayName": "",
+            "configurePreset": "Default"
+        }
+    ]
+}

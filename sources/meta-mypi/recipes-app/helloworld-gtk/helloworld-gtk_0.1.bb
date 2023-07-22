@@ -5,30 +5,23 @@ DEBUG_BUILD="1"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 SRC_URI = "file://helloworld-gtk.c \
-           file://helloworld-gtk-debug.sh \
+           file://helloworld-gtk-debug.sh \           
+            file://CMakeLists.txt \
            "
 
 S = "${WORKDIR}"
 
-inherit pkgconfig
 
-DEPENDS = "gtk+3"
-do_compile() {
-    
-    bbplain "${CC} ${CFLAGS} ${LDFLAGS} helloworld-gtk.c -o helloworld-gtk `pkg-config --cflags --libs gtk+-3.0` -lwayland-client"    
-    ${CC} ${CFLAGS} ${LDFLAGS} helloworld-gtk.c -o helloworld-gtk `pkg-config --cflags --libs gtk+-3.0` -lwayland-client
-}
-do_install() { 
+inherit cmake pkgconfig
 
-    bbplain "install -d ${D}${bindir}";
-    install -d ${D}${bindir}
+PACKAGE_DEBUG_SPLIT_STYLE = "debug-without-src"
 
-    bbplain "install -m 0755 helloworld-gtk ${D}${bindir}";
-    install -m 0755 helloworld-gtk ${D}${bindir}
+DEPENDS = "gtk+3 shared-mime-info"
 
-    bbplain "install -m 0755 helloworld-gtk-debug.sh ${D}${bindir}";
-    install -m 0755 helloworld-gtk-debug.sh ${D}${bindir}
-}
 
-FILES:${PN} += "${bindir}/helloworld-gtk"
-RDEPENDS:${PN} += "bash"
+
+EXTRA_OECMAKE = ""
+
+FILES:${PN} += "/usr/bin/helloworld-gtk"
+FILES:${PN} += "/usr/bin/helloworld-gtk-debug.sh"
+

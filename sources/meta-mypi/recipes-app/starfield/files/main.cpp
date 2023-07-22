@@ -169,7 +169,7 @@ static void activate (GtkApplication *app,
 
 
 int main (int    argc,     char **argv){
-    std::cout << "Hello, from Stadrfield!\n";
+    std::cout << "Hello, from starfield!\n";
     GtkApplication *app;
     int status;
 

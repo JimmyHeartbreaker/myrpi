@@ -5,8 +5,8 @@
 			
 		},
 		{
-			"path": "sources/meta-mypi/recipes-app/Starfield"		,
-			"name": "Starfield"	
+			"path": "sources/meta-mypi/recipes-app/starfield"		,
+			"name": "starfield"	
 		},
 		{
 			"path": "sources/meta-mypi/recipes-app/helloworld-gtk"		,

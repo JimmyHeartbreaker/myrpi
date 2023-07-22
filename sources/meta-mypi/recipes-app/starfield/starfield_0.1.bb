@@ -14,12 +14,14 @@ S = "${WORKDIR}"
 
 inherit cmake pkgconfig
 
+PACKAGE_DEBUG_SPLIT_STYLE = "debug-without-src"
 
-DEPENDS = "gtk+3 shared-mime-info"
+DEPENDS = "gtk+3 shared-mime-info "
 
 
 
 EXTRA_OECMAKE = ""
 
-FILES:${PN} = "/usr/bin/Starfield"
+FILES:${PN} += "/usr/bin/starfield"
+FILES:${PN} += "/usr/bin/starfield-debug.sh"
 

@@ -1,15 +1,17 @@
 
-project(Starfield C CXX)
+project(starfield C CXX)
 set(CMAKE_SYSTEM_PROCESSOR aarch64)
 cmake_minimum_required(VERSION 3.10)
-SET(PKG_CONFIG_PATH /home/jameshardaker/raspberryPi4/qemu-build/tmp-glibc/work/cortexa57-oe-linux/starfield/0.1-r0/recipe-sysroot/usr/lib/pkgconfig/)
+
+SET(PKG_CONFIG_PATH ${CMAKE_SYSROOT}/usr/lib/pkgconfig/)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
 
-set(CMAKE_C_COMPILER "/home/jameshardaker/raspberryPi4/qemu-build/tmp-glibc/sysroots-components/x86_64/gcc-cross-aarch64/usr/bin/aarch64-oe-linux/aarch64-oe-linux-gcc")
-set(CMAKE_CXX_COMPILER "/home/jameshardaker/raspberryPi4/qemu-build/tmp-glibc/sysroots-components/x86_64/gcc-cross-aarch64/usr/bin/aarch64-oe-linux/aarch64-oe-linux-g++")
+MESSAGE(SYSROOT ${CMAKE_SYSROOT})
+if(NOT DEFINED CMAKE_SYSROOT)
+    SET(CMAKE_SYSROOT ${CMAKE_CURRENT_SOURCE_DIR}/recipe-sysroot)
+endif(NOT DEFINED CMAKE_SYSROOT)
 
-SET(CMAKE_SYSROOT /home/jameshardaker/raspberryPi4/qemu-build/tmp-glibc/work/cortexa57-oe-linux/starfield/0.1-r0/recipe-sysroot)
 
 add_executable(${CMAKE_PROJECT_NAME} main.cpp)
 target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC cairo ${GTK3_LIBRARIES})
@@ -43,3 +45,5 @@ target_compile_options(${CMAKE_PROJECT_NAME} PUBLIC
 
 
 install(TARGETS ${CMAKE_PROJECT_NAME} RUNTIME DESTINATION "bin")
+
+install(FILES starfield-debug.sh DESTINATION "bin")

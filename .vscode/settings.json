@@ -38,5 +38,9 @@
         "wayland-client.h": "c",
         "wayland-util.h": "c"
     },
-    "cmake.sourceDirectory": "/home/jameshardaker/raspberryPi4/qemu-build/tmp-glibc/sysroots-components/x86_64/cmake-native/usr/share/cmake-3.22/Modules/FortranCInterface",
+    "cmake.configureArgs": [
+        "-DCMAKE_CXX_COMPILER:FILEPATH=/home/jameshardaker/raspberryPi4/qemu-build/tmp-glibc/sysroots-components/x86_64/gcc-cross-aarch64/usr/bin/aarch64-oe-linux/aarch64-oe-linux-g++",
+        "-DCMAKE_C_COMPILER:FILEPATH=/home/jameshardaker/raspberryPi4/qemu-build/tmp-glibc/sysroots-components/x86_64/gcc-cross-aarch64/usr/bin/aarch64-oe-linux/aarch64-oe-linux-gcc",
+    ]
+  
 }
