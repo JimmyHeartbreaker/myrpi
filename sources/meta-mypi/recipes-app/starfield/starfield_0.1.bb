@@ -4,24 +4,21 @@ SECTION = "examples"
 DEBUG_BUILD="1"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
-SRC_URI = "file://main.cpp \
-           file://starfield-debug.sh \           
-            file://CMakeLists.txt \
+SRC_URI = "\
+    file://src/ \
+    file://include/ \
+    file://starfield-debug.sh \           
+    file://CMakeLists.txt \
            "
 
 S = "${WORKDIR}"
 
 
+
 inherit cmake pkgconfig
 
 PACKAGE_DEBUG_SPLIT_STYLE = "debug-without-src"
-
-DEPENDS = "gtk+3 shared-mime-info "
-
+DEPENDS = "gtk+3"
 
 
-EXTRA_OECMAKE = ""
-
-FILES:${PN} += "/usr/bin/starfield"
-FILES:${PN} += "/usr/bin/starfield-debug.sh"
 

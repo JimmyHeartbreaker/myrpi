@@ -1,6 +1,7 @@
 #include <iostream>
 #include <gtk/gtk.h>
-
+#include "../include/starfield.h"
+#include "../include/starfield_config.h"
 /* Surface to store current scribbles */
 static cairo_surface_t *surface = NULL;
 
@@ -168,17 +169,28 @@ static void activate (GtkApplication *app,
 }
 
 
-int main (int    argc,     char **argv){
-    std::cout << "Hello, from starfield!\n";
-    GtkApplication *app;
-    int status;
+int main (int    argc,     char **argv)
+{
+  if (argc < 2) 
+  {
+    // report version
+    std::cout << argv[0] << " Version " << STARFIELD_VERSION_MAJOR << "."
+          << STARFIELD_VERSION_MINOR << std::endl;
+    std::cout << "Usage: " << argv[0] << " number" << std::endl;
+  }
 
-    app = gtk_application_new ("org.gtk.example", G_APPLICATION_DEFAULT_FLAGS);
-    g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
-    status = g_application_run (G_APPLICATION (app), argc, argv);
-    g_object_unref (app);
-    
-    return status;
+  std::cout << "Hello, from starfield!\n";
+  GtkApplication *app;
+  int status;
+
+  Starfield sf(1);
+
+  app = gtk_application_new ("org.gtk.example", G_APPLICATION_DEFAULT_FLAGS);
+  g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
+  status = g_application_run (G_APPLICATION (app), argc, argv);
+  g_object_unref (app);
+  
+  return status;
 
 }
 
