@@ -9,8 +9,8 @@ set(CMAKE_CXX_COMPILER ${CMAKE_CURRENT_LIST_DIR}/../tmp-glibc/sysroots-component
 # where is the target environment located
 message(${PROJECT_NAME})
 if("${PROJECT_NAME}" STREQUAL  "CMAKE_TRY_COMPILE")
-    set(CMAKE_FIND_ROOT_PATH "${CMAKE_CURRENT_LIST_DIR}/../tmp-glibc/work/cortexa57-oe-linux/helloworld-gtk/0.1-r0/recipe-sysroot")
-    set(CMAKE_SYSROOT  "${CMAKE_CURRENT_LIST_DIR}/../tmp-glibc/work/cortexa57-oe-linux/helloworld-gtk/0.1-r0/recipe-sysroot")
+    set(CMAKE_FIND_ROOT_PATH "${CMAKE_CURRENT_LIST_DIR}/../tmp-glibc/work/cortexa57-oe-linux/helloworld/0.1-r0/recipe-sysroot")
+    set(CMAKE_SYSROOT  "${CMAKE_CURRENT_LIST_DIR}/../tmp-glibc/work/cortexa57-oe-linux/helloworld/0.1-r0/recipe-sysroot")
 else()
     set(CMAKE_FIND_ROOT_PATH ${CMAKE_CURRENT_LIST_DIR}/../tmp-glibc/work/cortexa57-oe-linux/${PROJECT_NAME}/0.1-r0/recipe-sysroot)
     set(CMAKE_SYSROOT ${CMAKE_CURRENT_LIST_DIR}/../tmp-glibc/work/cortexa57-oe-linux/${PROJECT_NAME}/0.1-r0/recipe-sysroot)

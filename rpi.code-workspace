@@ -9,8 +9,8 @@
 			"name": "starfield"	
 		},
 		{
-			"path": "sources/meta-mypi/recipes-app/helloworld-gtk"		,
-			"name": "helloworld-gtk"	
+			"path": "sources/meta-mypi/recipes-app/helloworld"		,
+			"name": "helloworld"	
 		},
 		{
 			"path": "sources/meta-mypi/recipes-bsp/mydriver"		,

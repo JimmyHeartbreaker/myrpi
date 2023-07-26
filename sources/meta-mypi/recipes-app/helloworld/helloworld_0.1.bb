@@ -1,24 +1,22 @@
-DESCRIPTION = "A friendly program that prints Hello World!"
+DESCRIPTION = "Simple GTK 3.0 Hello World Application"
 PRIORITY = "optional"
 SECTION = "examples"
 DEBUG_BUILD="1"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
-SRC_URI = "file://helloworld.c"
+SRC_URI = "file://src/ \
+           file://include/ \           
+            file://CMakeLists.txt \
+           "
 
 S = "${WORKDIR}"
-do_compile() {
-    
-    bbplain "${CC} ${CFLAGS} ${LDFLAGS} helloworld.c -o helloworld"    
-    ${CC} ${CFLAGS} ${LDFLAGS} helloworld.c -o helloworld
-}
-do_install() { 
 
-    install -d ${D}${bindir}
-    bbplain "install -d ${D}${bindir}";
 
-    install -m 0755 helloworld ${D}${bindir}
-    bbplain "install -m 0755 helloworld ${D}${bindir}";
-}
+inherit cmake pkgconfig
 
-FILES_${PN} += "${bindir}/helloworld"
+PACKAGE_DEBUG_SPLIT_STYLE = "debug-without-src"
+
+DEPENDS = " gtk+3"
+
+
+
