@@ -9,14 +9,14 @@
 
 // each test module could contain no more then one 'main' file with init function defined
 // alternatively you could define init function yourself
-#define BOOST_TEST_MAIN
+
 #include <boost/test/unit_test.hpp>
 namespace bt = boost::unit_test;
 
 //____________________________________________________________________________//
 
 // most frequently you implement test cases as a free functions with automatic registration
-BOOST_AUTO_TEST_CASE( test1 )
+BOOST_AUTO_TEST_CASE( test5 )
 {
     // reports 'error in "test1": test 2 == 1 failed'
     BOOST_TEST( 1 == 1 );
@@ -25,7 +25,7 @@ BOOST_AUTO_TEST_CASE( test1 )
 //____________________________________________________________________________//
 
 // each test file may contain any number of test cases; each test case has to have unique name
-BOOST_AUTO_TEST_CASE( test2 )
+BOOST_AUTO_TEST_CASE( test7 )
 {
     int i = 0;
 
@@ -34,3 +34,4 @@ BOOST_AUTO_TEST_CASE( test2 )
 
     BOOST_TEST( i == 0 );
 }
+

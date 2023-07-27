@@ -22,9 +22,8 @@ if(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
     find_package(Boost 1.74.0 REQUIRED COMPONENTS system filesystem unit_test_framework)
     SET(BOOST_LIBRARIES Boost::unit_test_framework Boost::system Boost::filesystem)
     
-    add_executable(TestProgram tests/matrix_tests.cpp )
+    add_executable(TestProgram tests/main_tests.cpp  )
     target_link_libraries(TestProgram PUBLIC ${BOOST_LIBRARIES})
-    SET_TARGET_PROPERTIES(TestProgram PROPERTIES VERSION ${PROJECT_VERSION})
 
 endif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
 

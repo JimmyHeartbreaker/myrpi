@@ -22,7 +22,6 @@ if(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
 
     add_executable(TestProgram tests/unittestexample.cpp  )
     target_link_libraries(TestProgram PUBLIC ${BOOST_LIBRARIES})
-    SET_TARGET_PROPERTIES(TestProgram PROPERTIES VERSION ${PROJECT_VERSION})
 
 endif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
 
