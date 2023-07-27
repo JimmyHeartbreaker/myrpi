@@ -11,7 +11,6 @@
                 "CMAKE_SYSTEM_PROCESSOR":"aarch64",
                 "CMAKE_CXX_STANDARD 11":"11",
                 "CMAKE_CXX_STANDARD_REQUIRED":"True",
-                "CMAKE_ASM_FLAGS":"${CFLAGS} -x assembler-with-cpp",
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/../install/${presetName}",
                 "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_TOOLCHAIN_FILE": {
@@ -28,7 +27,6 @@
             "cacheVariables": {
                 "CMAKE_CXX_STANDARD 11":"11",
                 "CMAKE_CXX_STANDARD_REQUIRED":"True",
-                "CMAKE_ASM_FLAGS":"${CFLAGS} -x assembler-with-cpp",
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/../install/${presetName}",
                 "CMAKE_SYSTEM_PROCESSOR" : "x86_64",
                 "CMAKE_TOOLCHAIN_FILE": {
@@ -37,22 +35,6 @@
                 },
                 "CMAKE_BUILD_TYPE": "Debug"
             }
-        }
-    ],
-    "buildPresets": [
-        {
-            "name": "DefaultBuild",
-            "description": "",
-            "displayName": "",
-            "configurePreset": "Default"
-        }
-    ],
-    "testPresets": [
-        {
-            "name": "DefaultTest",
-            "description": "",
-            "displayName": "",
-            "configurePreset": "Default"
         }
     ]
 }

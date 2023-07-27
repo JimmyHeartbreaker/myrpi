@@ -17,4 +17,5 @@ add:        mov %edi,%eax
 callback:   call cFunction
             ret
             
+            .section .note.GNU-stack
 
