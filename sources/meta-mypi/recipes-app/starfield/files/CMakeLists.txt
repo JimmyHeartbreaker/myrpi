@@ -1,10 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
 project(starfield LANGUAGES C CXX ASM VERSION 1.0)
-set(CMAKE_SYSTEM_PROCESSOR aarch64)
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
-SET(CMAKE_ASM_FLAGS "${CFLAGS} -x assembler-with-cpp")
 
 
 SET(PKG_CONFIG_PATH ${CMAKE_SYSROOT}/usr/lib/pkgconfig/)
@@ -24,7 +20,7 @@ target_include_directories(sf PUBLIC ${PROJECT_BINARY_DIR}/include)
 SET_TARGET_PROPERTIES(sf PROPERTIES VERSION ${PROJECT_VERSION})
 
 #main executable
-add_executable(${CMAKE_PROJECT_NAME} src/examples.s src/main.cpp )
+add_executable(${CMAKE_PROJECT_NAME} src/${CMAKE_SYSTEM_PROCESSOR}/examples.s src/examples.cpp src/main.cpp )
 target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC ${GTK3_LIBRARIES} sf)
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC 
     ${CMAKE_SYSROOT}/usr/include/at-spi2-atk/2.0 
@@ -48,6 +44,7 @@ target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC
     ${CMAKE_SYSROOT}/usr/include/blkid 
     ${CMAKE_SYSROOT}/usr/include/glib-2.0 
     ${CMAKE_SYSROOT}/usr/lib/glib-2.0/include
+    ${CMAKE_SYSROOT}/usr/lib/x86_64-linux-gnu/glib-2.0/include
     ${PROJECT_BINARY_DIR}/include)
         
 

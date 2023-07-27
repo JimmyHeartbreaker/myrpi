@@ -2,7 +2,6 @@
 #include <gtk/gtk.h>
 #include "../include/starfield.h"
 #include "../include/starfield_config.h"
-#include "../include/fillPixel.h"
 /* Surface to store current scribbles */
 static cairo_surface_t *surface = NULL;
 
@@ -179,9 +178,7 @@ int main (int    argc,     char **argv)
           << STARFIELD_VERSION_MINOR << std::endl;
     std::cout << "Usage: " << argv[0] << " number" << std::endl;
   }
-  int x = fillPixel();
 
-  printf("Results of %d\n", x);
   std::cout << "Hello, from starfield!\n";
   GtkApplication *app;
   int status;
