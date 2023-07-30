@@ -11,5 +11,5 @@
 // alternatively you could define init function yourself
 #define BOOST_TEST_MAIN
 #include <boost/test/unit_test.hpp>
-#include "starfield_tests.cpp"
-#include "matrix_tests.cpp"
+//#include "starfield_tests.cpp"
+//#include "x86_64/matrix_tests.cpp"

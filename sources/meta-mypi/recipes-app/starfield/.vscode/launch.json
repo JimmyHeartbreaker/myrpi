@@ -4,10 +4,10 @@
         
 
         {
-            "name": "debug qemu",
+            "name": "Target Debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/Default/${workspaceFolderBasename}",
+            "program": "${workspaceFolder}/build/Target/${workspaceFolderBasename}",
             "args": [],
             "cwd": "${workspaceFolder}/${relativeFileDirname}",
             "environment": [],
@@ -29,10 +29,34 @@
             ]
         },
         {
+            "name": "Program Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/Host/${workspaceFolderBasename}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
             "name": "Test Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/Host/${workspaceFolderBasename}_Tests",
+            "program": "${workspaceFolder}/build/Host/TestProgram",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

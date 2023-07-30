@@ -1,10 +1,23 @@
 #include <iostream>
+#include <cmath>
 #include <gtk/gtk.h>
 #include "../include/starfield.h"
 #include "../include/starfield_config.h"
+#ifdef SF_X86
+#include "../include/x86_64/vector4.h"
+#else
+#include "../include/aarch64/vector4.h"
+#endif
+
 /* Surface to store current scribbles */
 static cairo_surface_t *surface = NULL;
-
+static cairo_surface_t *imageSurface = NULL;
+static Starfield starfield;
+static Matrix4x4 perspectiveProjectioMatrix = Matrix4x4::CreatePerspectiveProjectioMatrix(0.1,1000,1,1);
+static int height;
+static int width;
+static int intStride;
+static uint* surfaceData=NULL;
 static void clear_surface (void)
 {
   cairo_t *cr;
@@ -22,18 +35,54 @@ static gboolean configure_event_cb (GtkWidget         *widget,
                     GdkEventConfigure *event,
                     gpointer           data)
 {
-  if (surface)
-    cairo_surface_destroy (surface);
+  if (imageSurface)
+  {
+    g_free(surfaceData);
+    cairo_surface_destroy (imageSurface); 
+  }
+  width = gtk_widget_get_allocated_width (widget);
+  height = gtk_widget_get_allocated_height (widget);
 
-  surface = gdk_window_create_similar_surface (gtk_widget_get_window (widget),
-                                               CAIRO_CONTENT_COLOR,
-                                               gtk_widget_get_allocated_width (widget),
-                                               gtk_widget_get_allocated_height (widget));
 
+  int stride = cairo_format_stride_for_width (CAIRO_FORMAT_RGB24, width);
+  surfaceData = (uint* )g_malloc (height * stride);
+  intStride =  stride/4;
+
+
+  imageSurface = cairo_image_surface_create_for_data ((guchar *)surfaceData, CAIRO_FORMAT_RGB24,
+                                           width, height, stride);
+  
   /* Initialize the surface to white */
   clear_surface ();
 
   /* We've handled the configure event, no need for further processing. */
+  return TRUE;
+}
+GDateTime *prev;
+gboolean time_handler(GtkWidget *widget) {
+    
+
+  GDateTime *now = g_date_time_new_now_local(); 
+  
+  GTimeSpan diff = g_date_time_difference (now,prev);
+
+   for(int i=0;i< starfield.GetStarsCount();i++)
+  {
+    Star& star = starfield.GetStar(i);
+    star.Translate(0,0,-diff/ 100000.0);
+    if(star.GetPoint().GetZ() < 0.0)
+    {
+       star.Translate(0,0,100);
+    }
+  }
+
+  
+  gtk_widget_queue_draw (widget);
+  if(prev)
+  {
+    g_free(prev);
+  }
+  prev = now;
   return TRUE;
 }
 
@@ -45,7 +94,27 @@ static gboolean draw_cb (GtkWidget *widget,
          cairo_t   *cr,
          gpointer   data)
 {
-  cairo_set_source_surface (cr, surface, 0, 0);
+   memset(surfaceData, 0, height * intStride * 4);
+   for(int i=0;i< starfield.GetStarsCount();i++)
+  {
+    Star& star = starfield.GetStar(i);
+    Vector4 point = star.GetPoint();
+    Vector4 perspectivePoint = point.Multiply(perspectiveProjectioMatrix);
+    float screenX = round(((perspectivePoint.GetX() / perspectivePoint.GetW())+0.5) * width);    
+    float screenY = round(((perspectivePoint.GetY() / perspectivePoint.GetW())+0.5) * height);
+
+    if(screenX < width && screenY < height && screenY>=0 && screenX >=0)
+    {
+      int grey = (100-point.GetZ()) *  5;
+      if(grey>255)
+      {
+        grey=255;
+      }
+      surfaceData[(int)(screenY) * intStride + (int)screenX] = (grey << 16) | (grey << 8 )| grey ;
+    }
+  } 
+
+  cairo_set_source_surface (cr, imageSurface, 0, 0);
   cairo_paint (cr);
 
   return FALSE;
@@ -156,6 +225,7 @@ static void activate (GtkApplication *app,
   g_signal_connect (drawing_area, "button-press-event",
                     G_CALLBACK (button_press_event_cb), NULL);
 
+  g_timeout_add(10, (GSourceFunc) time_handler, (gpointer) window);
   /* Ask to receive events the drawing area doesn't normally
    * subscribe to. In particular, we need to ask for the
    * button press and motion notify events that want to handle.
@@ -183,7 +253,6 @@ int main (int    argc,     char **argv)
   GtkApplication *app;
   int status;
 
-  Starfield sf(1);
 
   app = gtk_application_new ("org.gtk.example", G_APPLICATION_DEFAULT_FLAGS);
   g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
@@ -193,4 +262,5 @@ int main (int    argc,     char **argv)
   return status;
 
 }
+
 
