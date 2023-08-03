@@ -10,7 +10,7 @@ Star::Star(Vector4 point) : _point(point)
 {
 
 }
-Vector4 Star::GetPoint()
+Vector4& Star::GetPoint()
 {
     return _point;
 }

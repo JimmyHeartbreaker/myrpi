@@ -14,6 +14,6 @@ class Star
  public:
  Star();
  Star(Vector4 point);
- Vector4 GetPoint();
+ Vector4& GetPoint();
  void Translate(float x, float y, float z);
 }; 

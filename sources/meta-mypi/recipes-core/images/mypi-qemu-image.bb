@@ -7,10 +7,10 @@ include recipes-graphics/images/core-image-weston.bb
 inherit extrausers
 
 EXTRA_USERS_PARAMS = " useradd ace; \
-                       usermod  -p '\$6\$11223344\$ugRUY.oaxjRovveD8OLZeCt8nxX8T4juMxFbzCh6jK4dc6OKvqf0JD0HkMh1a9mcXOqIGLxPRq3MWn71CFQJ7.' ace; \
+                       usermod  -p '\$6\$11223344\$YzaRt.fnidpXmKw.Dl20htfOrJ8X2Yx3V.h5zUlhlN2SdczempQmQcDcMYd6mHiXlaMqyGt200zDwuZiC8ZZw1' ace; \
                        usermod  -a -G sudo ace; \
                        "
-                       
+#password
 python do_display_banner() {
     bb.plain("***********************************************");
     bb.plain("*                                             *");

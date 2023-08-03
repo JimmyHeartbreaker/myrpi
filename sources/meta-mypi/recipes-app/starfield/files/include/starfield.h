@@ -1,14 +1,15 @@
 #pragma once
 
 #include "star.h"
+#include <vector>
 
 class Starfield
 {
  private:
  int _starsCount;
- Star* _stars;
+ std::vector<Star> _stars;
  public:
  Starfield();
- int GetStarsCount();
  Star& GetStar(int starNumber);
+ std::vector<Star>& GetStars();
 }; 

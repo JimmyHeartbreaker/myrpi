@@ -20,9 +20,10 @@ endif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
 SET(Boost_USE_STATIC_LIBS ON)
 SET(Boost_USE_DEBUG_LIBS ON)
 SET(Boost_USE_RELEASE_LIBS ON)
-SET(Boost_USE_MULTITHREADED ON)
+SET(Boost_USE_MULTITHREADED ON)             
+               
 
-find_package(Boost REQUIRED COMPONENTS system filesystem unit_test_framework)
+find_package(Boost COMPONENTS system filesystem unit_test_framework)
 SET(BOOST_LIBRARIES Boost::unit_test_framework Boost::system Boost::filesystem)
 
 add_executable(TestProgram tests/main_tests.cpp tests/${CMAKE_SYSTEM_PROCESSOR}/matrix_tests.cpp tests/starfield_tests.cpp  src/${CMAKE_SYSTEM_PROCESSOR}/matrix4x4.cpp src/${CMAKE_SYSTEM_PROCESSOR}/vector4.cpp )

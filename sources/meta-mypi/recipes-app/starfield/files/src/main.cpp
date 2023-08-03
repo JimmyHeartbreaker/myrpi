@@ -10,7 +10,6 @@
 #endif
 
 /* Surface to store current scribbles */
-static cairo_surface_t *surface = NULL;
 static cairo_surface_t *imageSurface = NULL;
 static Starfield starfield;
 static Matrix4x4 perspectiveProjectioMatrix = Matrix4x4::CreatePerspectiveProjectioMatrix(0.1,1000,1,1);
@@ -22,7 +21,7 @@ static void clear_surface (void)
 {
   cairo_t *cr;
 
-  cr = cairo_create (surface);
+  cr = cairo_create (imageSurface);
 
   cairo_set_source_rgb (cr, 1, 1, 1);
   cairo_paint (cr);
@@ -58,29 +57,27 @@ static gboolean configure_event_cb (GtkWidget         *widget,
   /* We've handled the configure event, no need for further processing. */
   return TRUE;
 }
-GDateTime *prev;
+GDateTime *prev=NULL;
 gboolean time_handler(GtkWidget *widget) {
     
-
-  GDateTime *now = g_date_time_new_now_local(); 
-  
-  GTimeSpan diff = g_date_time_difference (now,prev);
-
-   for(int i=0;i< starfield.GetStarsCount();i++)
-  {
-    Star& star = starfield.GetStar(i);
-    star.Translate(0,0,-diff/ 100000.0);
-    if(star.GetPoint().GetZ() < 0.0)
-    {
-       star.Translate(0,0,100);
-    }
-  }
-
-  
-  gtk_widget_queue_draw (widget);
+  GDateTime *now = g_date_time_new_now_utc(); 
   if(prev)
   {
-    g_free(prev);
+    
+    GTimeSpan diff = g_date_time_difference (now,prev);
+    for(Star & star : starfield.GetStars())
+   {   
+      star.Translate(0,0,-diff/ 100000.0);
+      if(star.GetPoint().GetZ() < 0.0)
+      {
+        star.Translate(0,0,100);
+      }
+   }
+
+    
+    gtk_widget_queue_draw (widget);
+ 
+    g_date_time_unref(prev);
   }
   prev = now;
   return TRUE;
@@ -94,14 +91,14 @@ static gboolean draw_cb (GtkWidget *widget,
          cairo_t   *cr,
          gpointer   data)
 {
-   memset(surfaceData, 0, height * intStride * 4);
-   for(int i=0;i< starfield.GetStarsCount();i++)
-  {
-    Star& star = starfield.GetStar(i);
+  memset(surfaceData, 0, height * intStride * 4);
+  for(Star star : starfield.GetStars())
+   {
     Vector4 point = star.GetPoint();
     Vector4 perspectivePoint = point.Multiply(perspectiveProjectioMatrix);
-    float screenX = round(((perspectivePoint.GetX() / perspectivePoint.GetW())+0.5) * width);    
-    float screenY = round(((perspectivePoint.GetY() / perspectivePoint.GetW())+0.5) * height);
+    auto w =  perspectivePoint.GetW();
+    float screenX = round(((perspectivePoint.GetX() /w)+0.5) * width);    
+    float screenY = round(((perspectivePoint.GetY() /w) +0.5) * height);
 
     if(screenX < width && screenY < height && screenY>=0 && screenX >=0)
     {
@@ -120,23 +117,13 @@ static gboolean draw_cb (GtkWidget *widget,
   return FALSE;
 }
 
-/* Draw a rectangle on the surface at the given position */
-static void draw_brush (GtkWidget *widget,
-            gdouble    x,
-            gdouble    y)
+
+static void close_window (void)
 {
-  cairo_t *cr;
+  if (imageSurface)
+    cairo_surface_destroy (imageSurface);
 
-  /* Paint to the surface, where we store our state */
-  cr = cairo_create (surface);
-
-  cairo_rectangle (cr, x - 3, y - 3, 6, 6);
-  cairo_fill (cr);
-
-  cairo_destroy (cr);
-
-  /* Now invalidate the affected region of the drawing area. */
-  gtk_widget_queue_draw_area (widget, x - 3, y - 3, 6, 6);
+  gtk_main_quit ();
 }
 
 /* Handle button press events by either drawing a rectangle
@@ -148,50 +135,14 @@ static gboolean button_press_event_cb (GtkWidget      *widget,
                        GdkEventButton *event,
                        gpointer        data)
 {
-  /* paranoia check, in case we haven't gotten a configure event */
-  if (surface == NULL)
-    return FALSE;
-
-  if (event->button == GDK_BUTTON_PRIMARY)
-    {
-      draw_brush (widget, event->x, event->y);
-    }
-  else if (event->button == GDK_BUTTON_SECONDARY)
-    {
-      clear_surface ();
-      gtk_widget_queue_draw (widget);
-    }
-
+ 
+   close_window();
   /* We've handled the event, stop processing */
   return TRUE;
 }
 
-/* Handle motion events by continuing to draw if button 1 is
- * still held down. The ::motion-notify signal handler receives
- * a GdkEventMotion struct which contains this information.
- */
-static gboolean motion_notify_event_cb (GtkWidget      *widget,
-                        GdkEventMotion *event,
-                        gpointer        data)
-{
-  /* paranoia check, in case we haven't gotten a configure event */
-  if (surface == NULL)
-    return FALSE;
 
-  if (event->state & GDK_BUTTON1_MASK)
-    draw_brush (widget, event->x, event->y);
 
-  /* We've handled it, stop processing */
-  return TRUE;
-}
-
-static void close_window (void)
-{
-  if (surface)
-    cairo_surface_destroy (surface);
-
-  gtk_main_quit ();
-}
 
 static void activate (GtkApplication *app,
           gpointer        user_data)
@@ -219,9 +170,6 @@ static void activate (GtkApplication *app,
   g_signal_connect (drawing_area,"configure-event",
                     G_CALLBACK (configure_event_cb), NULL);
 
-  /* Event signals */
-  g_signal_connect (drawing_area, "motion-notify-event",
-                    G_CALLBACK (motion_notify_event_cb), NULL);
   g_signal_connect (drawing_area, "button-press-event",
                     G_CALLBACK (button_press_event_cb), NULL);
 
