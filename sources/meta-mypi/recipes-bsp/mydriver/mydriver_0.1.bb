@@ -15,6 +15,10 @@ inherit module kernel-module-split cmake
 
 RPROVIDES:${PN} = "kernel-module-mydriver" 
 KERNEL_MODULE_AUTOLOAD += " mydriver "
-EXTRA_OECMAKE = ""
+
+EXTRA_OECMAKE = " \
+                 -DKERNELHEADERS_DIR=./../../../../../work-shared/${MACHINE}/kernel-build-artifacts/ \
+                 -DKERNELHEADERS_INCLUDE_DIRS=  ./../../../../../work-shared/${MACHINE}/kernel-source/arch/arm64/include/ \
+                 "
 
 FILES:${PN} = "/usr/modules/mydriver.ko"

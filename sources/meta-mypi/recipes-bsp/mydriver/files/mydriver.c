@@ -8,8 +8,8 @@ MODULE_LICENSE("GPL");
 ///< The author -- visible when you use modinfo 
 MODULE_AUTHOR("Bob");
 
-///< The description -- see modinfo 
-MODULE_DESCRIPTION("A simple Hello world LKM!");
+///< The description -- see modinfo  
+MODULE_DESCRIPTION("A simple Hello world LK M!");
 
 ///< The version of the module 
 MODULE_VERSION("0.1");

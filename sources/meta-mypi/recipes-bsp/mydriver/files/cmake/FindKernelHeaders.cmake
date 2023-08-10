@@ -1,9 +1,9 @@
-SET(KERNELHEADERS_DIR ./../../../../../work-shared/raspberrypi4-64/kernel-build-artifacts/)
+SET(KERNELHEADERS_DIR )
 message(STATUS "Kernel headers: ${KERNELHEADERS_DIR}")
 
 if (KERNELHEADERS_DIR)
     set(KERNELHEADERS_INCLUDE_DIRS
-    ./../../../../../work-shared/raspberrypi4-64/kernel-source/arch/arm64/include/
+    ./../../../../../work-shared/${CMAKE_MACHINE}/kernel-source/arch/arm64/include/
             CACHE PATH "Kernel headers include dirs"
             )
     set(KERNELHEADERS_FOUND 1 CACHE STRING "Set to 1 if kernel headers were found")

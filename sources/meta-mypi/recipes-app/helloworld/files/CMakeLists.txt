@@ -2,11 +2,8 @@ cmake_minimum_required(VERSION 3.10)
 
 project(helloworld LANGUAGES C CXX ASM VERSION 1.0)
 
-#fudge to make it work between vscode/cmake and bitbake/cmake
-if(NOT DEFINED CMAKE_SYSROOT)
-    SET(CMAKE_SYSROOT ${CMAKE_CURRENT_SOURCE_DIR}/recipe-sysroot)
-endif(NOT DEFINED CMAKE_SYSROOT)
 
+message(CMAKE_SYSROOT: ${CMAKE_SYSROOT})
 
 SET(PKG_CONFIG_PATH ${CMAKE_SYSROOT}/usr/lib/pkgconfig/)
 find_package(PkgConfig REQUIRED)
