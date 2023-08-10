@@ -9,9 +9,11 @@ endif(NOT DEFINED CMAKE_SYSROOT)
 
 
 # Find kernel headers
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
-find_package(KernelHeaders REQUIRED)
-include_directories(${KERNELHEADERS_INCLUDE_DIRS})
+if(NOT DEFINED KERNELHEADERS_DIR )
+        list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
+        find_package(KernelHeaders REQUIRED)
+        include_directories(${KERNELHEADERS_INCLUDE_DIRS})
+endif(NOT DEFINED KERNELHEADERS_DIR )
 
 set(DRIVER_FILE mydriver.ko)
 
