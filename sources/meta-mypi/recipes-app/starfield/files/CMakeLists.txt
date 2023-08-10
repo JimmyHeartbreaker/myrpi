@@ -17,11 +17,9 @@ add_compile_definitions(SF_X86)
 endif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
 
 #test program    
-SET(Boost_USE_STATIC_LIBS ON)
 SET(Boost_USE_DEBUG_LIBS ON)
 SET(Boost_USE_RELEASE_LIBS ON)
-SET(Boost_USE_MULTITHREADED ON)             
-               
+SET(Boost_USE_MULTITHREADED ON)      
 
 find_package(Boost COMPONENTS system filesystem unit_test_framework)
 SET(BOOST_LIBRARIES Boost::unit_test_framework Boost::system Boost::filesystem)

@@ -15,8 +15,7 @@ S = "${WORKDIR}"
 inherit cmake pkgconfig
 
 PACKAGE_DEBUG_SPLIT_STYLE = "debug-without-src"
-
-DEPENDS = " gtk+3"
+DEPENDS = "gtk+3 boost"
 
 
 

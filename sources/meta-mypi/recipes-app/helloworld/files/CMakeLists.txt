@@ -7,23 +7,22 @@ if(NOT DEFINED CMAKE_SYSROOT)
     SET(CMAKE_SYSROOT ${CMAKE_CURRENT_SOURCE_DIR}/recipe-sysroot)
 endif(NOT DEFINED CMAKE_SYSROOT)
 
-#test program
-if(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
-    
-    SET(Boost_USE_STATIC_LIBS ON)
-    SET(Boost_USE_DEBUG_LIBS ON)
-    SET(Boost_USE_RELEASE_LIBS ON)
-    SET(Boost_USE_MULTITHREADED ON)
 
-    SET(PKG_CONFIG_PATH ${CMAKE_SYSROOT}/usr/lib/pkgconfig/)
-    find_package(PkgConfig REQUIRED)
-    find_package(Boost 1.74.0 REQUIRED COMPONENTS system filesystem unit_test_framework)
-    SET(BOOST_LIBRARIES Boost::unit_test_framework Boost::system Boost::filesystem)
+SET(PKG_CONFIG_PATH ${CMAKE_SYSROOT}/usr/lib/pkgconfig/)
+find_package(PkgConfig REQUIRED)
 
-    add_executable(TestProgram tests/unittestexample.cpp  )
-    target_link_libraries(TestProgram PUBLIC ${BOOST_LIBRARIES})
+#test program    
+SET(Boost_USE_DEBUG_LIBS ON)
+SET(Boost_USE_RELEASE_LIBS ON)
+SET(Boost_USE_MULTITHREADED ON)
 
-endif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
+SET(PKG_CONFIG_PATH ${CMAKE_SYSROOT}/usr/lib/pkgconfig/)
+find_package(Boost COMPONENTS system filesystem unit_test_framework)
+SET(BOOST_LIBRARIES Boost::unit_test_framework Boost::system Boost::filesystem)
+
+add_executable(TestProgram tests/unittestexample.cpp  )
+target_link_libraries(TestProgram PUBLIC ${BOOST_LIBRARIES})
+
 
 
 configure_file(include/helloworld_config.h.in include/helloworld_config.h)

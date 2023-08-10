@@ -2,6 +2,7 @@
     "version": 4,
     "configurePresets": [
         {
+            
             "name": "Target",
             "generator": "Ninja",
             "displayName": "GCC 11.3.0 aarch64-oe-linux",
@@ -17,23 +18,6 @@
                     "type": "PATH",
                     "value": "${sourceDir}/../../../../../qemu-build/conf/CMakeToolChain.cmake"
                 }
-            }
-        },
-        {
-            "name": "Host",
-            "displayName": "GCC 11.3.0 x86_64-linux-gnu",
-            "description": "Using compilers: C = /usr/bin/gcc, CXX = /usr/bin/g++",
-            "binaryDir": "${sourceDir}/../build/${presetName}",
-            "cacheVariables": {
-                "CMAKE_CXX_STANDARD 11":"11",
-                "CMAKE_CXX_STANDARD_REQUIRED":"True",
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/../install/${presetName}",
-                "CMAKE_SYSTEM_PROCESSOR" : "x86_64",
-                "CMAKE_TOOLCHAIN_FILE": {
-                    "type": "PATH",
-                    "value": "${sourceDir}/../../../../../x86-build/conf/CMakeToolChain.cmake"
-                },
-                "CMAKE_BUILD_TYPE": "Debug"
             }
         }
     ]
