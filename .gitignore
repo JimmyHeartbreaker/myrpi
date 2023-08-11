@@ -16,3 +16,4 @@ sources/meta-mypi/recipes-app/helloworld/build
 sources/meta-mypi/recipes-app/starfield/build
 sources/meta-mypi/recipes-bsp/mydriver/build
 qemu-build/bitbake.lock
+sources/meta-mypi/recipes-bsp/mydriver/files/src/Kbuild

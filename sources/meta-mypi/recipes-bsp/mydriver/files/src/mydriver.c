@@ -18,13 +18,13 @@ static int __init hello_start(void) {
     printk(KERN_INFO
            "Loading hello    module...\n");
     printk(KERN_INFO
-           "Hello  wor ld\n");
+           "Hello  world\n");
     return 0;
 }
 
 static void __exit hello_end(void) {
     printk(KERN_INFO
-           "Goodb ye Mr.\n");
+           "Goodbye Mr.\n");
 }
 
 module_init(hello_start);
