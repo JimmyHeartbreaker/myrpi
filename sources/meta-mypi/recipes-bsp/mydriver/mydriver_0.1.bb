@@ -5,8 +5,8 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 INHIBIT_PACKAGE_STRIP = "1"
 SRC_URI = "\
             file://CMakeLists.txt \
-            file://src/mydriver.c \
-            file://src/dev_nr.c \
+            file://src/ \
+            file://tests/ \
         "
 
 S = "${WORKDIR}"
@@ -22,3 +22,5 @@ EXTRA_OECMAKE = " \
 
 FILES:${PN} += "/usr/modules/mydriver.ko"
 FILES:${PN} += "/usr/modules/dev_nr.ko"
+FILES:${PN} += "/usr/modules/read_write.ko"
+FILES:${PN} += "/usr/modules/gpio_driver.ko"
