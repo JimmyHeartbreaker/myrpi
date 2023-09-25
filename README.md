@@ -1,6 +1,6 @@
 # myrpi
 
-# setup
+# setup (WIP)
 
 - Run Ubuntu 23.04 in VirtualBox or full os. I used VirtualBox.
 - Install vscode https://code.visualstudio.com/docs/setup/linux
@@ -15,7 +15,7 @@
   
       bitbake mypi-qemu-image
   
-# vscode setup
+# vscode setup  (WIP)
 - launch vscode
 - Install extensions in vscode - cmake, cmake tools, cmake language support, cmake integration, cmake test explorer, C/C++ Extension Pack
 - open a CmakeLists.txt
