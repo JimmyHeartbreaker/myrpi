@@ -16,9 +16,12 @@
       bitbake mypi-qemu-image
   
 # vscode setup  (WIP)
+- Install through terminal cmake, cmake-extras, ninja-build, gtk+-3.0, libboost-all-dev
 - launch vscode
 - Install extensions in vscode - cmake, cmake tools, cmake language support, cmake integration, cmake test explorer, C/C++ Extension Pack
-- open a CmakeLists.txt
+- open workspace: rpi.code-workspace
+- allow cmake to guess which cmakelists.txt to use, this should reconfigure the config cmake.sourceDirectory to your absolute folder
 - vscode might prompt you to install .net runtime components, do this. If it fails go here and install manually https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install
+
   
 
