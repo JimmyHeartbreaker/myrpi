@@ -9,17 +9,20 @@ SET(PKG_CONFIG_PATH ${CMAKE_SYSROOT}/usr/lib/pkgconfig/)
 find_package(PkgConfig REQUIRED)
 
 #test program    
-SET(Boost_USE_DEBUG_LIBS ON)
-SET(Boost_USE_RELEASE_LIBS ON)
-SET(Boost_USE_MULTITHREADED ON)
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+)
 
-SET(PKG_CONFIG_PATH ${CMAKE_SYSROOT}/usr/lib/pkgconfig/)
-find_package(Boost COMPONENTS system filesystem unit_test_framework)
-SET(BOOST_LIBRARIES Boost::unit_test_framework Boost::system Boost::filesystem)
+include(GoogleTest)
+enable_testing()
 
-add_executable(TestProgram tests/unittestexample.cpp  )
-target_link_libraries(TestProgram PUBLIC ${BOOST_LIBRARIES})
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)  
 
+add_executable(${PROJECT_NAME}_Tests tests/unittestexample.cpp  )
+target_link_libraries(${PROJECT_NAME}_Tests PUBLIC GTest::gtest_main)
 
 
 configure_file(include/helloworld_config.h.in include/helloworld_config.h)

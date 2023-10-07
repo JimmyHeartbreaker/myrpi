@@ -7,27 +7,27 @@ SET(PKG_CONFIG_PATH ${CMAKE_SYSROOT}/usr/lib/pkgconfig/)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
 
-
 add_compile_definitions(SYS_CPU=${CMAKE_SYSTEM_PROCESSOR})
 
-
 #test program    
-SET(Boost_USE_DEBUG_LIBS ON)
-SET(Boost_USE_RELEASE_LIBS ON)
-SET(Boost_USE_MULTITHREADED ON)      
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+)
 
-find_package(Boost COMPONENTS system filesystem unit_test_framework)
-SET(BOOST_LIBRARIES Boost::unit_test_framework Boost::system Boost::filesystem)
+include(GoogleTest)
+enable_testing()
 
-add_executable(TestProgram tests/main_tests.cpp tests/${CMAKE_SYSTEM_PROCESSOR}/matrix_tests.cpp tests/starfield_tests.cpp  src/${CMAKE_SYSTEM_PROCESSOR}/matrix4x4.cpp src/${CMAKE_SYSTEM_PROCESSOR}/vector4.cpp )
-target_link_libraries(TestProgram PUBLIC ${BOOST_LIBRARIES})
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)  
+
+add_executable(${PROJECT_NAME}_Tests tests/${CMAKE_SYSTEM_PROCESSOR}/matrix_tests.cpp tests/starfield_tests.cpp src/star.cpp src/${CMAKE_SYSTEM_PROCESSOR}/matrix4x4.cpp src/${CMAKE_SYSTEM_PROCESSOR}/vector4.cpp )
+target_link_libraries(${PROJECT_NAME}_Tests PUBLIC  GTest::gtest_main)
 
 #set version
 configure_file(include/starfield_config.h.in include/starfield_config.h)
-
-#libraries
-#target_include_directories(sf PUBLIC ${PROJECT_BINARY_DIR}/include)
-#SET_TARGET_PROPERTIES(sf PROPERTIES VERSION ${PROJECT_VERSION})
 
 #main executable
 add_executable(${PROJECT_NAME} src/${CMAKE_SYSTEM_PROCESSOR}/examples.s src/starfield.cpp src/examples.cpp src/main.cpp  src/star.cpp src/${CMAKE_SYSTEM_PROCESSOR}/matrix4x4.cpp src/${CMAKE_SYSTEM_PROCESSOR}/vector4.cpp )
@@ -60,4 +60,3 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 
 #installs
 install(TARGETS ${PROJECT_NAME} DESTINATION "bin")
-#install(TARGETS sf DESTINATION "lib")

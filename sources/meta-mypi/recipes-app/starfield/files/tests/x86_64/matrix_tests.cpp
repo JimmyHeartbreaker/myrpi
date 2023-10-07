@@ -1,24 +1,13 @@
-//  (C) Copyright Gennadiy Rozental 2005.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at 
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-
-// Boost.Test
-
-// each test module could contain no more then one 'main' file with init function defined
-// alternatively you could define init function yourself
-
-#include <boost/test/unit_test.hpp>
+#include "gtest/gtest.h"
 #include "../../include/x86_64/vector4.h"
 #include "../../include/x86_64/matrix4x4.h"
-namespace bt = boost::unit_test;
+
+namespace {
 
 //____________________________________________________________________________//
 
 // most frequently you implement test cases as a free functions with automatic registration
-BOOST_AUTO_TEST_CASE( vector4_mul_matrix4x4 )
+TEST( vector4, mul_matrix4x4 )
 {
     Vector4 vector(1,2,3,4);
    
@@ -29,12 +18,12 @@ BOOST_AUTO_TEST_CASE( vector4_mul_matrix4x4 )
 
     Vector4 result = vector.Multiply(matrix);
     Vector4 expected(310, 320 ,330,340);
-    bool match =  result == expected;
+    
     // reports 'error in "test1": test 2 == 1 failed'
-    BOOST_TEST(match);
+    EXPECT_EQ(result,expected);
 }
 // most frequently you implement test cases as a free functions with automatic registration
-BOOST_AUTO_TEST_CASE( vector4_mul_matrix4x4_perspective )
+TEST( vector4, mul_matrix4x4_perspective )
 {
     Vector4 position(10,10,10,1);
     double n = 1;
@@ -47,8 +36,10 @@ BOOST_AUTO_TEST_CASE( vector4_mul_matrix4x4_perspective )
     float Sx = perspectiveCorrect.GetX() / perspectiveCorrect.GetW();
     float Sy =  perspectiveCorrect.GetY() / perspectiveCorrect.GetW();
     // reports 'error in "test1": test 2 == 1 failed'
-    BOOST_TEST( 1 == 1 );
+    EXPECT_EQ( 2 ,Sx );
+    EXPECT_EQ( 2 ,Sy );
 }
 
 //____________________________________________________________________________//
+}
 

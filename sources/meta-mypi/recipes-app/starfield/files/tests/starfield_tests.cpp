@@ -1,37 +1,12 @@
-//  (C) Copyright Gennadiy Rozental 2005.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at 
-//  http://www.boost.org/LICENSE_1_0.txt)
+#include "gtest/gtest.h"
+#include "../include/star.h"
+namespace {
 
-//  See http://www.boost.org/libs/test for the library home page.
 
-// Boost.Test
-
-// each test module could contain no more then one 'main' file with init function defined
-// alternatively you could define init function yourself
-
-#include <boost/test/unit_test.hpp>
-namespace bt = boost::unit_test;
-
-//____________________________________________________________________________//
-
-// most frequently you implement test cases as a free functions with automatic registration
-BOOST_AUTO_TEST_CASE( test5 )
+TEST(Star, Translate)
 {
-    // reports 'error in "test1": test 2 == 1 failed'
-    BOOST_TEST( 1 == 1 );
+    Star s(Vector4(0,0,0,0));
+    s.Translate(100,100,100);
+    EXPECT_EQ( s.GetPoint() , Vector4(100,100,100,0) );
 }
-
-//____________________________________________________________________________//
-
-// each test file may contain any number of test cases; each test case has to have unique name
-BOOST_AUTO_TEST_CASE( test7 )
-{
-    int i = 0;
-
-    // reports 'error in "test2": check i == 2 failed [0 != 2]'
-    BOOST_TEST( i == 0 );
-
-    BOOST_TEST( i == 0 );
 }
-
