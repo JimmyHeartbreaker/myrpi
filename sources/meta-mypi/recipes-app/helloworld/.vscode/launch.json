@@ -29,7 +29,7 @@
             "name": "Test Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/Host/TestProgram",
+            "program": "${workspaceFolder}/build/Host/helloworld_Tests",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

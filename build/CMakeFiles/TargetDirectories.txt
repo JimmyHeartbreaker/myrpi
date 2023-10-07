@@ -1,0 +1,13 @@
+/home/ubuntu/repositories/myrpi/myrpi/build/CMakeFiles/zlib.dir
+/home/ubuntu/repositories/myrpi/myrpi/build/CMakeFiles/zlibstatic.dir
+/home/ubuntu/repositories/myrpi/myrpi/build/CMakeFiles/example.dir
+/home/ubuntu/repositories/myrpi/myrpi/build/CMakeFiles/minigzip.dir
+/home/ubuntu/repositories/myrpi/myrpi/build/CMakeFiles/example64.dir
+/home/ubuntu/repositories/myrpi/myrpi/build/CMakeFiles/minigzip64.dir
+/home/ubuntu/repositories/myrpi/myrpi/build/CMakeFiles/test.dir
+/home/ubuntu/repositories/myrpi/myrpi/build/CMakeFiles/edit_cache.dir
+/home/ubuntu/repositories/myrpi/myrpi/build/CMakeFiles/rebuild_cache.dir
+/home/ubuntu/repositories/myrpi/myrpi/build/CMakeFiles/list_install_components.dir
+/home/ubuntu/repositories/myrpi/myrpi/build/CMakeFiles/install.dir
+/home/ubuntu/repositories/myrpi/myrpi/build/CMakeFiles/install/local.dir
+/home/ubuntu/repositories/myrpi/myrpi/build/CMakeFiles/install/strip.dir

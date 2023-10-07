@@ -1,0 +1,14 @@
+{
+    "tasks": [
+        {
+            "label": "deploy_qemu",
+            "command": "bash ${workspaceFolder}/../../../../deploy_qemu.sh ${fileWorkspaceFolder}",
+            "type": "shell",
+            "promptOnClose": false,
+            "presentation": {
+                "close": true
+            }
+        }
+    ],
+    "version": "2.0.0"
+}

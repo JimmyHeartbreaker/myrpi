@@ -1,38 +1,11 @@
 {
     "version": "0.2.0",
     "configurations": [
-        
-
         {
-            "name": "Target Debug",
+            "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/Target/${workspaceFolderBasename}",
-            "args": [],
-            "cwd": "${workspaceFolder}/${relativeFileDirname}",
-            "environment": [],
-            "miDebuggerPath": "/usr/bin/gdb-multiarch",
-            "miDebuggerServerAddress": "192.168.7.2:1234",
-            "MIMode": "gdb",
-            "targetArchitecture": "ARM64",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                },
-                {
-                    "description": "Set Disassembly Flavor to Intel",
-                    "text": "-gdb-set disassembly-flavor intel",
-                    "ignoreFailures": true
-                }
-            ]
-        },
-        {
-            "name": "Program Launch",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/build/Host/${workspaceFolderBasename}",
+            "program": "${workspaceFolder}/build/Host/sensorhub",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
@@ -56,7 +29,7 @@
             "name": "Test Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/Host/${workspaceFolderBasename}_Tests",
+            "program": "${workspaceFolder}/build/Host/sensorhub_Tests",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
@@ -75,6 +48,32 @@
                     "ignoreFailures": true
                 }
             ]
-        }
+        },
+        {
+            "name": "debug qemu",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/Target/${workspaceFolderBasename}",
+            "args": [],
+            "cwd": "${workspaceFolder}/${relativeFileDirname}",
+            "environment": [],
+            "miDebuggerPath": "/usr/bin/gdb-multiarch",
+            "miDebuggerServerAddress": "192.168.7.2:1234",
+            "MIMode": "gdb",
+            "targetArchitecture": "ARM64",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        
     ]
 }
