@@ -1,10 +1,10 @@
 #pragma once
 
-#ifdef SF_X86
-#include "./x86_64/vector4.h"
-#else
-#include "./aarch64/vector4.h"
-#endif
+
+#include "macros.h"
+
+#include INCLUDE_FILE(vector4.h)
+
 
 class Star
 {

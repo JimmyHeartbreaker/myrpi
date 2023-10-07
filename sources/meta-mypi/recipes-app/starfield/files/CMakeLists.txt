@@ -8,9 +8,8 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
 
 
-if(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
-add_compile_definitions(SF_X86)
-endif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
+add_compile_definitions(SYS_CPU=${CMAKE_SYSTEM_PROCESSOR})
+
 
 #test program    
 SET(Boost_USE_DEBUG_LIBS ON)

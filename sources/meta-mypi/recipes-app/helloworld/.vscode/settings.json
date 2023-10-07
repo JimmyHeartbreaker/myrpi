@@ -1,6 +1,5 @@
 {
-    "cmake.sourceDirectory": "/home/jameshardaker/raspberryPi4/sources/meta-mypi/recipes-app/helloworld/files",
-    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "cmake.sourceDirectory": "/home/ubuntu/repositories/myrpi/myrpi/sources/meta-mypi/recipes-app/helloworld/files"
    
   
  

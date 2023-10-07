@@ -38,9 +38,7 @@
         "wayland-client.h": "c",
         "wayland-util.h": "c"
     },
-    "cmake.configureArgs": [
-        "-DCMAKE_CXX_COMPILER:FILEPATH=/home/jameshardaker/raspberryPi4/qemu-build/tmp-glibc/sysroots-components/x86_64/gcc-cross-aarch64/usr/bin/aarch64-oe-linux/aarch64-oe-linux-g++",
-        "-DCMAKE_C_COMPILER:FILEPATH=/home/jameshardaker/raspberryPi4/qemu-build/tmp-glibc/sysroots-components/x86_64/gcc-cross-aarch64/usr/bin/aarch64-oe-linux/aarch64-oe-linux-gcc",
-    ]
+    "cmake.sourceDirectory": "/home/ubuntu/repositories/myrpi/myrpi/qemu-build/tmp-glibc/work/x86_64-linux/binutils-cross-aarch64/2.41/git/zlib",
+
     
 }

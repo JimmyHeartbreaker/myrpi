@@ -3,11 +3,8 @@
 #include <gtk/gtk.h>
 #include "../include/starfield.h"
 #include "../include/starfield_config.h"
-#ifdef SF_X86
-#include "../include/x86_64/vector4.h"
-#else
-#include "../include/aarch64/vector4.h"
-#endif
+
+#include INCLUDE_FILE( vector4.h)
 
 /* Surface to store current scribbles */
 static cairo_surface_t *imageSurface = NULL;
