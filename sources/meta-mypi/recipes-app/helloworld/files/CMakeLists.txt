@@ -9,6 +9,8 @@ SET(PKG_CONFIG_PATH ${CMAKE_SYSROOT}/usr/lib/pkgconfig/)
 find_package(PkgConfig REQUIRED)
 
 #test program    
+find_package(GTest REQUIRED)
+
 include(FetchContent)
 FetchContent_Declare(
   googletest

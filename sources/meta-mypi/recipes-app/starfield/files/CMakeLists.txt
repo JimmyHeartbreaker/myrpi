@@ -4,12 +4,14 @@ project(starfield LANGUAGES C CXX ASM VERSION 1.0)
 
 
 SET(PKG_CONFIG_PATH ${CMAKE_SYSROOT}/usr/lib/pkgconfig/)
-find_package(PkgConfig REQUIRED)
+find_package(PkgConfig  REQUIRED)
+
 pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
 
 add_compile_definitions(SYS_CPU=${CMAKE_SYSTEM_PROCESSOR})
 
 #test program    
+find_package(GTest REQUIRED)
 include(FetchContent)
 FetchContent_Declare(
   googletest

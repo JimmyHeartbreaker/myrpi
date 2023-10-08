@@ -4,6 +4,8 @@ project(mydriver LANGUAGES C CXX ASM VERSION 1.0)
 
 
 #test program    
+find_package(GTest REQUIRED)
+
 include(FetchContent)
 FetchContent_Declare(
   googletest
@@ -17,11 +19,11 @@ enable_testing()
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)  
 
-add_executable(${PROJECT_NAME}_Tests tests/${CMAKE_SYSTEM_PROCESSOR}/matrix_tests.cpp tests/starfield_tests.cpp src/star.cpp src/${CMAKE_SYSTEM_PROCESSOR}/matrix4x4.cpp src/${CMAKE_SYSTEM_PROCESSOR}/vector4.cpp )
-target_link_libraries(${PROJECT_NAME}_Tests PUBLIC  GTest::gtest_main)
+#add_executable(${PROJECT_NAME}_Tests tests/dev_nr_tests.cpp )
+#target_link_libraries(${PROJECT_NAME}_Tests PUBLIC  GTest::gtest_main)
 
 # Generate the Kbuild file through cmake.
-FILE(WRITE ${CMAKE_CURRENT_SOURCE_DIR}/src/Kbuild "obj-m += mydriver.o dev_nr.o read_write.o gpio_driver.o")
+FILE(WRITE ${CMAKE_CURRENT_SOURCE_DIR}/src/Kbuild "obj-m += mydriver.o dev_nr.o")
 
 string(REPLACE "g++" "" TOOLCHAIN_PREFIX ${CMAKE_CXX_COMPILER})
 message(${CMAKE_CURRENT_SOURCE_DIR})
@@ -30,15 +32,15 @@ add_custom_command(OUTPUT cleaned
         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
         DEPENDS src/mydriver.c VERBATIM)
 
-add_custom_command(OUTPUT mydriver.ko dev_nr.ko read_write.ko gpio_driver.ko
+add_custom_command(OUTPUT mydriver.ko dev_nr.ko
         COMMAND make ARCH=arm64 CROSS_COMPILE=${TOOLCHAIN_PREFIX} -C ${KERNELHEADERS_DIR} modules M=${CMAKE_CURRENT_BINARY_DIR} src=${CMAKE_CURRENT_SOURCE_DIR}/src
         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
         DEPENDS cleaned VERBATIM)
 
 add_custom_target(dev_nr ALL DEPENDS dev_nr.ko)
-add_custom_target(read_write ALL DEPENDS read_write.ko)
+#add_custom_target(read_write ALL DEPENDS read_write.ko)
 add_custom_target(mydriver ALL DEPENDS mydriver.ko)
-add_custom_target(gpio_driver ALL DEPENDS gpio_driver.ko)
+#add_custom_target(gpio_driver ALL DEPENDS gpio_driver.ko)
 
 
-install(FILES build/read_write.ko build/mydriver.ko build/dev_nr.ko DESTINATION "modules")
+install(FILES build/mydriver.ko build/dev_nr.ko DESTINATION "modules")
