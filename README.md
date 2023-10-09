@@ -6,7 +6,7 @@
 - Install vscode https://code.visualstudio.com/docs/setup/linux or maybe https://linuxize.com/post/how-to-install-visual-studio-code-on-ubuntu-20-04/
 - install gh
 - for github authentication run: gh auth login
-- Pull this repository into a handy folder, pull any submodules. See .gitmodules
+- Clone this repository into a handy folder, clone any submodules. git clone https://github.com/JimmyHeartbreaker/myrpi.git <folderName> See .gitmodules
 - install the following tools:  chrpath diffstat gawk lz4c
 - try bitbake qemu-build
       navigate to root folder in terminal
