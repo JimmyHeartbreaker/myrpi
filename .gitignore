@@ -18,4 +18,7 @@ sources/meta-mypi/recipes-app/starfield/build
 sources/meta-mypi/recipes-bsp/mydriver/build
 qemu-build/bitbake.lock
 sources/meta-mypi/recipes-bsp/mydriver/files/src/Kbuild
-*/.vscode/settings.json
+/home/JimmyHeartbreaker/repositories/myrpi/sources/meta-mypi/recipes-app/helloworld/.vscode/settings.json
+/home/JimmyHeartbreaker/repositories/myrpi/sources/meta-mypi/recipes-app/sensorhub/.vscode/settings.json
+/home/JimmyHeartbreaker/repositories/myrpi/sources/meta-mypi/recipes-app/mydriver/.vscode/settings.json
+/home/JimmyHeartbreaker/repositories/myrpi/sources/meta-mypi/recipes-app/starfield/.vscode/settings.json
