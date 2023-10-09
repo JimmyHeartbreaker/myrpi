@@ -1,7 +1,0 @@
-{
-    "cmake.sourceDirectory": "/home/ubuntu/repositories/myrpi/myrpi/sources/meta-mypi/recipes-app/helloworld/files",
-    "C_Cpp.default.configurationProvider": "go2sh.cmake-integration"
-   
-  
- 
-}
