@@ -1,0 +1,1 @@
+obj-m += mydriver.o dev_nr.o
