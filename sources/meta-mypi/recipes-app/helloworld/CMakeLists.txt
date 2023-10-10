@@ -26,7 +26,7 @@ FetchContent_MakeAvailable(googletest)
 add_executable(${PROJECT_NAME}_Tests tests/unittestexample.cpp  )
 target_link_libraries(${PROJECT_NAME}_Tests PUBLIC GTest::gtest_main)
 
-
+#versioning
 configure_file(include/helloworld_config.h.in include/helloworld_config.h)
 
 #main executable

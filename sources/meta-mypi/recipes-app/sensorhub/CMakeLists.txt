@@ -7,19 +7,9 @@ message(CMAKE_SYSROOT: ${CMAKE_SYSROOT})
 
 SET(PKG_CONFIG_PATH ${CMAKE_SYSROOT}/usr/lib/pkgconfig/)
 find_package(PkgConfig REQUIRED)
-#find_library(WASTORAGE_LIBRARY azurestorage)
-#find_package(iothub_client REQUIRED)
+find_package(CURL REQUIRED)
+find_package(OpenSSL REQUIRED)
 
-
-#azure-identity-cpp
-#azure-security-attestation-cpp
-#azure-security-keyvault-certificates-cpp
-#azure-security-keyvault-keys-cpp
-#azure-security-keyvault-secrets-cpp
-#azure-storage-blobs-cpp
-#azure-storage-files-datalake-cpp
-#azure-storage-files-shares-cpp
-#azure-storage-queues-cpp
 
 #test program    
 include(FetchContent)
@@ -40,11 +30,23 @@ target_link_libraries(${PROJECT_NAME}_Tests PUBLIC GTest::gtest_main)
 
 configure_file(include/sensorhub_config.h.in include/sensorhub_config.h)
 
+LINK_DIRECTORIES(/home/JimmyHeartbreaker/repositories/myrpi/sources/azure-iot-sdk-c/iothub_client)
+LINK_DIRECTORIES(/home/JimmyHeartbreaker/repositories/myrpi/sources/azure-iot-sdk-c/c-utility/)
+LINK_DIRECTORIES(/home/JimmyHeartbreaker/repositories/myrpi/sources/azure-iot-sdk-c/serializer)
+LINK_DIRECTORIES(/home/JimmyHeartbreaker/repositories/myrpi/sources/azure-iot-sdk-c/iothub_client/deps/parson)
+LINK_DIRECTORIES(/home/JimmyHeartbreaker/repositories/myrpi/sources/azure-iot-sdk-c/provisioning_client)
+LINK_DIRECTORIES(/home/JimmyHeartbreaker/repositories/myrpi/sources/azure-iot-sdk-c/umqtt)
+LINK_DIRECTORIES(/home/JimmyHeartbreaker/repositories/myrpi/sources/azure-iot-sdk-c/provisioning_client/deps/utpm)
 #main executable
 add_executable(${PROJECT_NAME} src/sensorhub.cpp )
-#target_link_directories()
-target_link_libraries(${PROJECT_NAME} PUBLIC iothub_client)
+target_link_libraries(${PROJECT_NAME} PUBLIC  
+iothub_client prov_device_client iothub_client_mqtt_transport prov_auth_client umqtt 
+hsm_security_client utpm dl aziotsharedutil parson pthread curl OpenSSL::SSL OpenSSL::Crypto m 
+serializer
+  
+  )
 target_include_directories(${PROJECT_NAME} PUBLIC 
+    ${CURL_INCLUDE_DIR}
     ${CMAKE_SYSROOT}/usr/include/glib-2.0 
     ${CMAKE_SYSROOT}/usr/lib/glib-2.0/include
     /home/JimmyHeartbreaker/repositories/myrpi/sources/azure-iot-sdk-c/c-utility/inc

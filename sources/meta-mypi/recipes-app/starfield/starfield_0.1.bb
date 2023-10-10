@@ -22,3 +22,5 @@ DEPENDS = "gtk+3 googletest"
 
 
 
+
+FILESEXTRAPATHS:prepend := "${THISDIR}:"
