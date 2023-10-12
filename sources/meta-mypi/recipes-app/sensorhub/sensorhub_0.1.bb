@@ -13,11 +13,11 @@ SRC_URI = "file://src/ \
 S = "${WORKDIR}"
 
 
-inherit cmake pkgconfig
+inherit cmake pkgconfig 
 
 PACKAGE_DEBUG_SPLIT_STYLE = "debug-without-src"
 
 
-
+DEPENDS += " googletest curl azure-iot-sdk-c"
 
 FILESEXTRAPATHS:prepend := "${THISDIR}:"

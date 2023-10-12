@@ -19,6 +19,10 @@
 		{
 			"path": "sources/meta-mypi/recipes-app/sensorhub"		,
 			"name": "sensorhub"	
+		},
+		{
+			"path":"sources/meta-mypi/recipes-core/azure-iot-sdk-c",
+			"name": "azure-iot-sdk-c"
 		}
 	],
 	"settings": {
@@ -122,7 +126,9 @@
 			"typeinfo": "cpp",
 			"valarray": "cpp",
 			"variant": "cpp",
-			"*.inc": "cpp"
+			"*.inc": "cpp",
+			"uniqueid.h": "c",
+			"uuid.h": "c"
 		}
 	},
 	"tasks": {

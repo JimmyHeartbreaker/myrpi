@@ -16,6 +16,7 @@ sources/meta-mypi/recipes-app/sensorhub/build
 sources/meta-mypi/recipes-app/helloworld/build
 sources/meta-mypi/recipes-app/starfield/build
 sources/meta-mypi/recipes-bsp/mydriver/build
+sources/meta-mypi/recipes-core/azure-iot-sdk-c/build
 qemu-build/bitbake.lock
 sources/meta-mypi/recipes-bsp/mydriver/files/src/Kbuild
 sources/meta-mypi/recipes-app/helloworld/.vscode/settings.json

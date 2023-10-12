@@ -43,12 +43,12 @@ if [ $? -eq 0 ]; then
     systemctl start NetworkManager
 fi
 
-sudo qemu-system-aarch64 \
+sudo ./qemu-build/tmp-glibc/sysroots-components/x86_64/qemu-system-native/usr/bin/qemu-system-aarch64 \
 	-netdev tap,id=mynet0,ifname=tap0,script=no,downscript=no \
 	-device virtio-net-pci,netdev=mynet0,mac=52:55:00:d1:55:01 \
 	-object rng-random,filename=/dev/urandom,id=rng0 \
 	-device virtio-rng-pci,rng=rng0 \
-	-drive id=disk0,file=/home/jameshardaker/raspberryPi4/qemu-build/tmp-glibc/deploy/images/qemuarm64/mypi-qemu-image-qemuarm64.ext4,if=none,format=raw \
+	-drive id=disk0,file=./qemu-build/tmp-glibc/deploy/images/qemuarm64/mypi-qemu-image-qemuarm64.rootfs.ext4,if=none,format=raw \
 	-device virtio-blk-pci,drive=disk0 \
 	-device qemu-xhci \
 	-device usb-tablet \
@@ -59,7 +59,7 @@ sudo qemu-system-aarch64 \
 	-m 512 \
 	-serial mon:stdio \
 	-serial null \
-	-display gtk,gl=on \
+	-display gtk \
 	-device virtio-gpu-gl-pci \
-	-kernel /home/jameshardaker/raspberryPi4/qemu-build/tmp-glibc/deploy/images/qemuarm64/Image \
+	-kernel ./qemu-build/tmp-glibc/deploy/images/qemuarm64/Image \
 	-append 'root=/dev/vda rw  mem=512M console=ttyAMA0 console=hvc0  '

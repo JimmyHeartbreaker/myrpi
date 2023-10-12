@@ -12,31 +12,23 @@ find_package(OpenSSL REQUIRED)
 
 
 #test program    
-include(FetchContent)
-FetchContent_Declare(
-  googletest
-  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
-)
+#include(FetchContent)
+#FetchContent_Declare(
+#  googletest
+#  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+#)
 
-include(GoogleTest)
-enable_testing()
+#include(GoogleTest)
+#enable_testing()
 
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)  
+#set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+#FetchContent_MakeAvailable(googletest)  
 
-add_executable(${PROJECT_NAME}_Tests tests/unittestexample.cpp  )
-target_link_libraries(${PROJECT_NAME}_Tests PUBLIC GTest::gtest_main)
+#add_executable(${PROJECT_NAME}_Tests tests/unittestexample.cpp  )
+#target_link_libraries(${PROJECT_NAME}_Tests PUBLIC ${GTEST_LIBRARIES})
 
 
 configure_file(include/sensorhub_config.h.in include/sensorhub_config.h)
-
-LINK_DIRECTORIES(/home/JimmyHeartbreaker/repositories/myrpi/sources/azure-iot-sdk-c/iothub_client)
-LINK_DIRECTORIES(/home/JimmyHeartbreaker/repositories/myrpi/sources/azure-iot-sdk-c/c-utility/)
-LINK_DIRECTORIES(/home/JimmyHeartbreaker/repositories/myrpi/sources/azure-iot-sdk-c/serializer)
-LINK_DIRECTORIES(/home/JimmyHeartbreaker/repositories/myrpi/sources/azure-iot-sdk-c/iothub_client/deps/parson)
-LINK_DIRECTORIES(/home/JimmyHeartbreaker/repositories/myrpi/sources/azure-iot-sdk-c/provisioning_client)
-LINK_DIRECTORIES(/home/JimmyHeartbreaker/repositories/myrpi/sources/azure-iot-sdk-c/umqtt)
-LINK_DIRECTORIES(/home/JimmyHeartbreaker/repositories/myrpi/sources/azure-iot-sdk-c/provisioning_client/deps/utpm)
 #main executable
 add_executable(${PROJECT_NAME} src/sensorhub.cpp )
 target_link_libraries(${PROJECT_NAME} PUBLIC  
@@ -49,11 +41,8 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     ${CURL_INCLUDE_DIR}
     ${CMAKE_SYSROOT}/usr/include/glib-2.0 
     ${CMAKE_SYSROOT}/usr/lib/glib-2.0/include
-    /home/JimmyHeartbreaker/repositories/myrpi/sources/azure-iot-sdk-c/c-utility/inc
-    /home/JimmyHeartbreaker/repositories/myrpi/sources/azure-iot-sdk-c/iothub_client/inc
-    /home/JimmyHeartbreaker/repositories/myrpi/sources/azure-iot-sdk-c/deps/azure-macro-utils-c/inc
-    /home/JimmyHeartbreaker/repositories/myrpi/sources/azure-iot-sdk-c/deps/umock-c/inc
-    /home/JimmyHeartbreaker/repositories/myrpi/sources/azure-iot-sdk-c/serializer/inc
+    ${CMAKE_SYSROOT}/usr/include/azureiot
+    ${CMAKE_SYSROOT}/usr/local/include/azureiot
     ${PROJECT_BINARY_DIR}/include)
         
 

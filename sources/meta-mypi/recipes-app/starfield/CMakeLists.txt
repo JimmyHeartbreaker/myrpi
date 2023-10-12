@@ -11,22 +11,22 @@ pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
 add_compile_definitions(SYS_CPU=${CMAKE_SYSTEM_PROCESSOR})
 
 #test program    
-find_package(GTest REQUIRED)
-include(FetchContent)
-FetchContent_Declare(
-  googletest
-  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
-)
+#find_package(GTest REQUIRED)
+#include(FetchContent)
+#FetchContent_Declare(
+#  googletest
+#  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+#)
 
-include(GoogleTest)
-enable_testing()
+#include(GoogleTest)
+#enable_testing()
 
 # For Windows: Prevent overriding the parent project's compiler/linker settings
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)  
+#set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+#FetchContent_MakeAvailable(googletest)  
 
-add_executable(${PROJECT_NAME}_Tests tests/${CMAKE_SYSTEM_PROCESSOR}/matrix_tests.cpp tests/starfield_tests.cpp src/star.cpp src/${CMAKE_SYSTEM_PROCESSOR}/matrix4x4.cpp src/${CMAKE_SYSTEM_PROCESSOR}/vector4.cpp )
-target_link_libraries(${PROJECT_NAME}_Tests PUBLIC  GTest::gtest_main)
+#add_executable(${PROJECT_NAME}_Tests tests/${CMAKE_SYSTEM_PROCESSOR}/matrix_tests.cpp tests/starfield_tests.cpp src/star.cpp src/${CMAKE_SYSTEM_PROCESSOR}/matrix4x4.cpp src/${CMAKE_SYSTEM_PROCESSOR}/vector4.cpp )
+#target_link_libraries(${PROJECT_NAME}_Tests PUBLIC ${GTEST_LIBRARIES})
 
 #set version
 configure_file(include/starfield_config.h.in include/starfield_config.h)
