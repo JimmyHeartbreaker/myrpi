@@ -13,3 +13,8 @@
 [submodule "poky"] 
   path = sources/poky
   url = https://github.com/yoctoproject/poky.git
+
+
+[submodule "azure-iot-sdk-c"] 
+  path = sources/meta-mypi/recipes-core/azure-iot-sdk-c
+  url = https://github.com/Azure/azure-iot-sdk-c.git
