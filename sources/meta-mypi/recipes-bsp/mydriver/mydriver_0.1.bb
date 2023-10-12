@@ -25,6 +25,6 @@ FILES:${PN} += "/usr/modules/dev_nr.ko"
 FILES:${PN} += "/usr/modules/read_write.ko"
 FILES:${PN} += "/usr/modules/gpio_driver.ko"
 
-DEPENDS = "gtest"
+DEPENDS += "gtest"
 
 FILESEXTRAPATHS:prepend := "${THISDIR}:"

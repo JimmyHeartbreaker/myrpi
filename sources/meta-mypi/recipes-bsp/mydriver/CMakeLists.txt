@@ -6,22 +6,22 @@ SET(PKG_CONFIG_PATH ${CMAKE_SYSROOT}/usr/lib/pkgconfig/)
 find_package(PkgConfig REQUIRED)
 
 #test program    
-#find_package(GTest REQUIRED)
+find_package(GTest REQUIRED)
 
-#include(FetchContent)
-#FetchContent_Declare(
-#  googletest
-#  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
-#)
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+)
 
-#include(GoogleTest)
-#enable_testing()
+include(GoogleTest)
+enable_testing()
 
-#set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-#FetchContent_MakeAvailable(googletest)  
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)  
 
-#add_executable(${PROJECT_NAME}_Tests tests/dev_nr_tests.cpp )
-#target_link_libraries(${PROJECT_NAME}_Tests PUBLIC ${GTEST_LIBRARIES})
+add_executable(${PROJECT_NAME}_Tests tests/dev_nr_tests.cpp )
+target_link_libraries(${PROJECT_NAME}_Tests PUBLIC GTest::gtest_main)
 
 # Generate the Kbuild file through cmake.
 FILE(WRITE ${CMAKE_CURRENT_SOURCE_DIR}/src/Kbuild "obj-m += mydriver.o dev_nr.o")
@@ -31,7 +31,7 @@ message(${CMAKE_CURRENT_SOURCE_DIR})
 add_custom_command(OUTPUT cleaned
         COMMAND make ARCH=arm64 CROSS_COMPILE=${TOOLCHAIN_PREFIX} -C ${KERNELHEADERS_DIR} clean M=${CMAKE_CURRENT_BINARY_DIR} src=${CMAKE_CURRENT_SOURCE_DIR}/src
         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-        DEPENDS src/mydriver.c VERBATIM)
+        DEPENDS ${PROJECT_NAME}_Tests VERBATIM)
 
 add_custom_command(OUTPUT mydriver.ko dev_nr.ko
         COMMAND make ARCH=arm64 CROSS_COMPILE=${TOOLCHAIN_PREFIX} -C ${KERNELHEADERS_DIR} modules M=${CMAKE_CURRENT_BINARY_DIR} src=${CMAKE_CURRENT_SOURCE_DIR}/src

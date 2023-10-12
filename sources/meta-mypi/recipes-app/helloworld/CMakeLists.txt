@@ -9,22 +9,22 @@ SET(PKG_CONFIG_PATH ${CMAKE_SYSROOT}/usr/lib/pkgconfig/)
 find_package(PkgConfig REQUIRED)
 
 #test program    
-#find_package(GTest REQUIRED)
+find_package(GTest REQUIRED)
 
-#include(FetchContent)
-#FetchContent_Declare(
-#  googletest
-#  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
-#)
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+)
 
-#include(GoogleTest)
-#enable_testing()
+include(GoogleTest)
+enable_testing()
 
-#set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-#FetchContent_MakeAvailable(googletest)  
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)  
 
-#add_executable(${PROJECT_NAME}_Tests tests/unittestexample.cpp  )
-#target_link_libraries(${PROJECT_NAME}_Tests PUBLIC ${GTEST_LIBRARIES})
+add_executable(${PROJECT_NAME}_Tests tests/unittestexample.cpp  )
+target_link_libraries(${PROJECT_NAME}_Tests PUBLIC GTest::gtest_main)
 
 #versioning
 configure_file(include/helloworld_config.h.in include/helloworld_config.h)
