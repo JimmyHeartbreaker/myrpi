@@ -315,20 +315,21 @@ void* send_telemetry_data_multi_thread(char *iotHubName, const char *eventName, 
     return NULL;
 }
 
-int main(int argc, char *argv[])
+int main(int argc, char *nargv[])
 {
     //initial_telemetry();
-    if (argc < 2)
-    {
-        LogError("Usage: %s <IoT hub device connection string>", argv[0]);
+ //   if (argc < 2)
+ //   {
+ //       LogError("Usage: %s <IoT hub device connection string>", argv[0]);
      //   send_telemetry_data(NULL, EVENT_FAILED, "Device connection string is not provided");
-        return 1;
-    }
+ //       return 1;
+ //   }
 
    // setupWiring();
 
     char device_id[257];
-    char *device_id_src = get_device_id(argv[1]);
+    char conString[] = "HostName=RPIHub01.azure-devices.net;DeviceId=RPI_01;SharedAccessKey=fKG6EFaSZeA6eKYDpGJ6iyuJ2h2BkvUCZAIoTF+CMYA=";
+    char *device_id_src = get_device_id(conString);
 
     if (device_id_src == NULL)
     {
@@ -350,14 +351,14 @@ int main(int argc, char *argv[])
     }
     else
     {
-        if ((iotHubClientHandle = IoTHubClient_LL_CreateFromConnectionString(argv[1], MQTT_Protocol)) == NULL)
+        if ((iotHubClientHandle = IoTHubClient_LL_CreateFromConnectionString(conString, MQTT_Protocol)) == NULL)
         {
             LogError("iotHubClientHandle is NULL!");
          //   send_telemetry_data(NULL, EVENT_FAILED, "Cannot create iotHubClientHandle");
         }
         else
         {
-            if (strstr(argv[1], "x509=true") != NULL)
+            if (strstr(conString, "x509=true") != NULL)
             {
                 // Use X.509 certificate authentication.
                 if (!setX509Certificate(iotHubClientHandle, device_id))
@@ -374,7 +375,7 @@ int main(int argc, char *argv[])
 
             IoTHubClient_LL_SetOption(iotHubClientHandle, "product_info", "HappyPath_RaspberryPi-C");
 
-            char *iotHubName = parse_iothub_name(argv[1]);
+            char *iotHubName = parse_iothub_name(conString);
             send_telemetry_data_multi_thread(iotHubName, EVENT_SUCCESS, "IoT hub connection is established");
             int count = 0;
             while (true)
