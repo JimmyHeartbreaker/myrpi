@@ -17,4 +17,5 @@
 
 [submodule "azure-iot-sdk-c"] 
   path = sources/meta-mypi/recipes-core/azure-iot-sdk-c
-  url = https://github.com/Azure/azure-iot-sdk-c.git
+  url = https://github.com/JimmyHeartbreaker/azure-iot-sdk-c.git
+  branch = mypi
