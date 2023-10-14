@@ -1,19 +1,37 @@
 [submodule "meta-openembedded"] 
   path = sources/meta-openembedded 
   url = https://github.com/openembedded/meta-openembedded.git
+  branch = mickledore
  
 [submodule "meta-qt5"] 
   path = sources/meta-qt5
   url = https://github.com/meta-qt5/meta-qt5.git
+  branch = mickledore
   
 [submodule "meta-raspberrypi"] 
   path = sources/meta-raspberrypi
   url = https://github.com/agherzan/meta-raspberrypi.git
+  branch = mickledore
   
 [submodule "poky"] 
   path = sources/poky
   url = https://github.com/yoctoproject/poky.git
+  branch = mickledore
 
+[submodule "meta-iotedge"] 
+  path = sources/meta-iotedge
+  url = https://github.com/Azure/meta-iotedge.git
+  branch = mickledore
+
+[submodule "meta-virtualization"] 
+  path = sources/meta-virtualization
+  url = https://git.yoctoproject.org/meta-virtualization
+  branch = mickledore
+
+[submodule "meta-rust"] 
+  path = sources/meta-rust
+  url = https://github.com/meta-rust/meta-rust.git
+  branch = add-mickledore
 
 [submodule "azure-iot-sdk-c"] 
   path = sources/meta-mypi/recipes-core/azure-iot-sdk-c
