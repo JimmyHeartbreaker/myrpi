@@ -24,7 +24,7 @@
       bitbake mypi-qemu-image
   
 # vscode setup  (WIP)
-- Install through terminal cmake, cmake-extras, pkg-config, ninja-build, libgtk-3-dev, libgtest-dev, gdb, curl, openssl
+- Install through terminal cmake, cmake-extras, pkg-config, ninja-build, libgtk-3-dev, libgtest-dev, gdb, curl, openssl, libcurl4-openssl-dev, libssl-dev
 - launch vscode
 - Install extensions in vscode - cmake, cmake tools, cmake language support, cmake integration,  C/C++ Extension Pack, testmate
 - open workspace: rpi.code-workspace
