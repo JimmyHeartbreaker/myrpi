@@ -18,6 +18,10 @@ inherit cmake pkgconfig
 PACKAGE_DEBUG_SPLIT_STYLE = "debug-without-src"
 
 
+EXTRA_OECMAKE = " \
+                 -DCMAKE_SYSROOT=recipe-sysroot \
+                 "
+
 DEPENDS += " googletest curl azure-iot-sdk-c"
 
 FILESEXTRAPATHS:prepend := "${THISDIR}:"

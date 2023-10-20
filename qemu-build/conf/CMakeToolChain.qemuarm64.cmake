@@ -2,18 +2,23 @@
 set(CMAKE_SYSTEM_NAME Linux)
 
 # which compilers to use for C and C++
+file(GLOB_RECURSE CMAKE_C_COMPILER ${CMAKE_CURRENT_LIST_DIR}/../tmp-glibc/work/*/${PROJECT_NAME}/*/recipe-sysroot-native/usr/bin/aarch64-oe-linux/aarch64-oe-linux-gcc)
 
-set(CMAKE_C_COMPILER   ${CMAKE_CURRENT_LIST_DIR}/../tmp-glibc/work/qemuarm64-oe-linux/${PROJECT_NAME}/0.1/recipe-sysroot-native/usr/bin/aarch64-oe-linux/aarch64-oe-linux-gcc)
-set(CMAKE_CXX_COMPILER ${CMAKE_CURRENT_LIST_DIR}/../tmp-glibc/work/qemuarm64-oe-linux/${PROJECT_NAME}/0.1/recipe-sysroot-native/usr/bin/aarch64-oe-linux/aarch64-oe-linux-g++)
+get_filename_component(GCC_DIR "${CMAKE_C_COMPILER}" DIRECTORY)
+set(CMAKE_CXX_COMPILER ${GCC_DIR}/aarch64-oe-linux-g++)
 
 # where is the target environment located
+# where is the target environment located
 if("${PROJECT_NAME}" STREQUAL  "CMAKE_TRY_COMPILE")
-    set(CMAKE_FIND_ROOT_PATH ${CMAKE_CURRENT_LIST_DIR}/../tmp-glibc/work/cortexa57-oe-linux/helloworld/0.1/recipe-sysroot)
-    set(CMAKE_SYSROOT  ${CMAKE_CURRENT_LIST_DIR}/../tmp-glibc/work/cortexa57-oe-linux/helloworld/0.1/recipe-sysroot)
+    file(GLOB CMAKELIST_PATH ${CMAKE_CURRENT_LIST_DIR}/../tmp-glibc/work/*/helloworld/*/CMakeLists.txt)        
 else()
-    set(CMAKE_FIND_ROOT_PATH ${CMAKE_CURRENT_LIST_DIR}/../tmp-glibc/work/qemuarm64-oe-linux/${PROJECT_NAME}/0.1/recipe-sysroot)
-    set(CMAKE_SYSROOT ${CMAKE_CURRENT_LIST_DIR}/../tmp-glibc/work/qemuarm64-oe-linux/${PROJECT_NAME}/0.1/recipe-sysroot)
+    file(GLOB CMAKELIST_PATH ${CMAKE_CURRENT_LIST_DIR}/../tmp-glibc/work/*/${PROJECT_NAME}/*/CMakeLists.txt)          
 endif("${PROJECT_NAME}" STREQUAL  "CMAKE_TRY_COMPILE")
+
+get_filename_component(PROJECT_DIR "${CMAKELIST_PATH}" DIRECTORY)
+
+set(CMAKE_FIND_ROOT_PATH ${PROJECT_DIR}/recipe-sysroot)
+set(CMAKE_SYSROOT  ${CMAKE_FIND_ROOT_PATH})
 
 
 

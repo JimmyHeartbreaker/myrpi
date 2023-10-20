@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.10)
 project(sensorhub LANGUAGES C CXX ASM VERSION 1.0)
 
 
-message(CMAKE_SYSROOT: ${CMAKE_SYSROOT})
 
 SET(PKG_CONFIG_PATH ${CMAKE_SYSROOT}/usr/lib/pkgconfig/)
 find_package(PkgConfig REQUIRED)
@@ -27,7 +26,9 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)  
 
 add_executable(${PROJECT_NAME}_Tests tests/unittestexample.cpp  )
+
 target_link_libraries(${PROJECT_NAME}_Tests PUBLIC GTest::gtest_main)
+
 
 
 configure_file(include/sensorhub_config.h.in include/sensorhub_config.h)
@@ -39,6 +40,7 @@ hsm_security_client utpm dl aziotsharedutil parson pthread curl OpenSSL::SSL Ope
 serializer
   
   )
+  
 target_include_directories(${PROJECT_NAME} PUBLIC 
     ${CURL_INCLUDE_DIR}
     ${CMAKE_SYSROOT}/usr/include/glib-2.0 

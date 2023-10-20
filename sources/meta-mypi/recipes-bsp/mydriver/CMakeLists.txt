@@ -27,16 +27,13 @@ target_link_libraries(${PROJECT_NAME}_Tests PUBLIC GTest::gtest_main)
 FILE(WRITE ${CMAKE_CURRENT_SOURCE_DIR}/src/Kbuild "obj-m += mydriver.o dev_nr.o")
 
 string(REPLACE "g++" "" TOOLCHAIN_PREFIX ${CMAKE_CXX_COMPILER})
-message(${CMAKE_CURRENT_SOURCE_DIR})
-add_custom_command(OUTPUT cleaned
-        COMMAND make ARCH=arm64 CROSS_COMPILE=${TOOLCHAIN_PREFIX} -C ${KERNELHEADERS_DIR} clean M=${CMAKE_CURRENT_BINARY_DIR} src=${CMAKE_CURRENT_SOURCE_DIR}/src
-        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-        DEPENDS ${PROJECT_NAME}_Tests VERBATIM)
+
+
 
 add_custom_command(OUTPUT mydriver.ko dev_nr.ko
         COMMAND make ARCH=arm64 CROSS_COMPILE=${TOOLCHAIN_PREFIX} -C ${KERNELHEADERS_DIR} modules M=${CMAKE_CURRENT_BINARY_DIR} src=${CMAKE_CURRENT_SOURCE_DIR}/src
         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-        DEPENDS cleaned VERBATIM)
+        DEPENDS src/dev_nr.c src/mydriver.c VERBATIM)
 
 add_custom_target(dev_nr ALL DEPENDS dev_nr.ko)
 #add_custom_target(read_write ALL DEPENDS read_write.ko)

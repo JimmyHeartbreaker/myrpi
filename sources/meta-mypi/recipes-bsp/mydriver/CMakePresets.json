@@ -13,7 +13,6 @@
                 "CMAKE_CXX_STANDARD 11":"11",
                 "CMAKE_CXX_STANDARD_REQUIRED":"True",
                 "KERNELHEADERS_DIR":"${sourceDir}/../../../../qemu-build/tmp-glibc/work-shared/qemuarm64/kernel-build-artifacts/",
-                "KERNELHEADERS_INCLUDE_DIRS":"${sourceDir}/../../../../qemu-build/tmp-glibc/work-shared/qemuarm64/kernel-source/arch/arm64/include/",
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
                 "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_TOOLCHAIN_FILE": {

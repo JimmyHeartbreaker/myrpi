@@ -21,6 +21,9 @@ PACKAGE_DEBUG_SPLIT_STYLE = "debug-without-src"
 DEPENDS = "gtk+3 googletest"
 
 
+EXTRA_OECMAKE = " \
+                 -DCMAKE_SYSROOT=recipe-sysroot \
+                 "
 
 
 FILESEXTRAPATHS:prepend := "${THISDIR}:"
