@@ -1,8 +1,8 @@
 # myrpi
 
-# setup (WIP)
+# setup
 
-- Run Ubuntu 23.04 in VirtualBox or full os. I used VirtualBox. Need to be on at least 22.10 because of glib 2.74 dependency. This might be useful https://linuxconfig.org/how-to-upgrade-ubuntu-from-22-04-to-22-10
+- Run Ubuntu 22.04 in VirtualBox or full os. I used VirtualBox. 
 - Install vscode https://code.visualstudio.com/docs/setup/linux or maybe https://linuxize.com/post/how-to-install-visual-studio-code-on-ubuntu-20-04/
 - install gh
 - for github authentication run: gh auth login
@@ -23,7 +23,7 @@
   
       bitbake mypi-qemu-image
   
-# vscode setup  (WIP)
+# vscode setup 
 - Install through terminal cmake, cmake-extras, pkg-config, ninja-build, libgtk-3-dev, libgtest-dev, gdb, curl, openssl, libcurl4-openssl-dev, libssl-dev
 - launch vscode
 - Install extensions in vscode - cmake, cmake tools, cmake language support, cmake integration,  C/C++ Extension Pack, testmate
