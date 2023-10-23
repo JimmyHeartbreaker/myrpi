@@ -1,4 +1,13 @@
 # myrpi
+This is a project for developing prototype applications for my custom distro built ontop of open embedded layer. 
+
+Starfield is an app that renders a basic starfield as you move through it.
+
+Helloworld demonstrates some x86 and Arm assembly
+
+Sensorhub is in progress and will be taking data from my arduino over bluetooh and sending it to azure.
+
+Mydriver is for learning how to develop and deploy drivers in linux.
 
 # setup
 
