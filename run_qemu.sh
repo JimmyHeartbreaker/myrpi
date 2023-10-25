@@ -1,4 +1,4 @@
-#!/bin/bash
+# !/bin/bash
 
 # if [[ $EUID > 0 ]]
 #   then echo "Run this script as root"
@@ -79,4 +79,5 @@ sudo ./qemu-build/tmp-glibc/sysroots-components/x86_64/qemu-system-native/usr/bi
 	-display gtk \
 	-device virtio-gpu-pci \
 	-kernel ./qemu-build/tmp-glibc/deploy/images/qemuarm64/Image \
-	-append 'root=/dev/vda rw  mem=512M console=ttyAMA0 console=hvc0  '
+	-append 'root=/dev/vda rw  mem=512M console=ttyAMA0 console=hvc0  ' \
+	-nic user,hostfwd=tcp::8888-:1234,hostfwd=tcp::22-:22

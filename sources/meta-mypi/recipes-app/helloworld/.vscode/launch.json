@@ -58,7 +58,7 @@
             "cwd": "${workspaceFolder}/${relativeFileDirname}",
             "environment": [],
             "miDebuggerPath": "/usr/bin/gdb-multiarch",
-            "miDebuggerServerAddress": "192.168.7.2:1234",
+            "miDebuggerServerAddress": "127.0.0.1:8888",
             "MIMode": "gdb",
             "targetArchitecture": "ARM64",
             "setupCommands": [
