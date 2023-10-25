@@ -8,9 +8,10 @@ class Starfield
 {
  private:
  int _starsCount;
- std::vector<Star> _stars;
+ std::vector<Star> _stars; 
  public:
- Starfield();
+ Starfield(int nStars);
+ ~Starfield();
  Star& GetStar(int starNumber);
  std::vector<Star>& GetStars();
 }; 

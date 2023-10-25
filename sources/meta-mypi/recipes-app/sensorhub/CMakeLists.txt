@@ -20,7 +20,7 @@ FetchContent_Declare(
 )
 
 include(GoogleTest)
-enable_testing()
+#enable_testing()
 
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)  

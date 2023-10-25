@@ -128,7 +128,15 @@
 			"variant": "cpp",
 			"*.inc": "cpp",
 			"uniqueid.h": "c",
-			"uuid.h": "c"
+			"uuid.h": "c",
+			"__locale": "cpp",
+			"ios": "cpp",
+			"__config": "cpp",
+			"__debug": "cpp",
+			"__verbose_abort": "cpp",
+			"locale": "cpp",
+			"queue": "cpp",
+			"stack": "cpp"
 		}
 	},
 	"tasks": {

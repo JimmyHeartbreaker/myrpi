@@ -8,7 +8,7 @@
 
 /* Surface to store current scribbles */
 static cairo_surface_t *imageSurface = NULL;
-static Starfield starfield;
+static Starfield* starfield;
 static Matrix4x4 perspectiveProjectioMatrix = Matrix4x4::CreatePerspectiveProjectioMatrix(0.1,1000,1,1);
 static int height;
 static int width;
@@ -58,11 +58,11 @@ GDateTime *prev=NULL;
 gboolean time_handler(GtkWidget *widget) {
     
   GDateTime *now = g_date_time_new_now_utc(); 
-  if(prev)
+  if(prev && starfield)
   {
     
     GTimeSpan diff = g_date_time_difference (now,prev);
-    for(Star & star : starfield.GetStars())
+    for(Star & star : starfield->GetStars())
    {   
       star.Translate(0,0,-diff/ 100000.0);
       if(star.GetPoint().GetZ() < 0.0)
@@ -89,7 +89,7 @@ static gboolean draw_cb (GtkWidget *widget,
          gpointer   data)
 {
   memset(surfaceData, 0, height * intStride * 4);
-  for(Star star : starfield.GetStars())
+  for(Star star : starfield->GetStars())
    {
     Vector4 point = star.GetPoint();
     Vector4 perspectivePoint = point.Multiply(perspectiveProjectioMatrix);
@@ -113,14 +113,18 @@ static gboolean draw_cb (GtkWidget *widget,
 
   return FALSE;
 }
-
+GtkApplication *app;
 
 static void close_window (void)
 {
   if (imageSurface)
     cairo_surface_destroy (imageSurface);
-
-  gtk_main_quit ();
+  if(starfield)
+  {
+    delete starfield;
+    starfield=NULL;
+  }
+  g_application_quit (G_APPLICATION(app));
 }
 
 /* Handle button press events by either drawing a rectangle
@@ -193,15 +197,25 @@ int main (int    argc,     char **argv)
           << STARFIELD_VERSION_MINOR << std::endl;
     std::cout << "Usage: " << argv[0] << " number" << std::endl;
   }
-
+  int nStars= 100;
+  if(argc >= 2)
+  {
+    nStars = atoi(argv[1]);
+  }
+  std::cout << nStars << " stars" << std::endl;
+  starfield = new Starfield(nStars);
   std::cout << "Hello, from starfield!\n";
-  GtkApplication *app;
+  
   int status;
 
 
   app = gtk_application_new ("org.gtk.example", G_APPLICATION_FLAGS_NONE);
   g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
-  status = g_application_run (G_APPLICATION (app), argc, argv);
+  char args[0];
+  char* argsPtr[1];
+  argsPtr[0] = args;
+
+  status = g_application_run (G_APPLICATION (app), argc, argsPtr);
   g_object_unref (app);
   
   return status;

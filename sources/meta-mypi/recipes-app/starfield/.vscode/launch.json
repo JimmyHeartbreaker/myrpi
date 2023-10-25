@@ -4,17 +4,16 @@
         
 
         {
-            "name": "Target Debug",
+            "name": "Program Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/Target/${workspaceFolderBasename}",
-            "args": [],
-            "cwd": "${workspaceFolder}/${relativeFileDirname}",
+            "program": "${workspaceFolder}/build/Host/${workspaceFolderBasename}",
+            "args": ["200"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
             "environment": [],
-            "miDebuggerPath": "/usr/bin/gdb-multiarch",
-            "miDebuggerServerAddress": "192.168.7.2:1234",
+            "externalConsole": false,
             "MIMode": "gdb",
-            "targetArchitecture": "ARM64",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -29,16 +28,17 @@
             ]
         },
         {
-            "name": "Program Launch",
+            "name": "Target Debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/Host/${workspaceFolderBasename}",
+            "program": "${workspaceFolder}/build/Target/${workspaceFolderBasename}",
             "args": [],
-            "stopAtEntry": false,
-            "cwd": "${fileDirname}",
+            "cwd": "${workspaceFolder}/${relativeFileDirname}",
             "environment": [],
-            "externalConsole": false,
+            "miDebuggerPath": "/usr/bin/gdb-multiarch",
+            "miDebuggerServerAddress": "192.168.7.2:1234",
             "MIMode": "gdb",
+            "targetArchitecture": "ARM64",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
