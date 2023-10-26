@@ -40,5 +40,9 @@ Mydriver is for learning how to develop and deploy drivers in linux.
 - allow cmake to guess which cmakelists.txt to use, this should reconfigure the config cmake.sourceDirectory to your absolute folder
 - vscode might prompt you to install .net runtime components, do this. If it fails go here and install manually https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install
 
+# qemu setup
+ - QEMU is included in the recipes and should be built as part of the above steps. Last time i did a fresh install I had some issues with some dependencies that were not on my system - the error logs are clear, just install whatever it says.
+
+To run qemu for this setup i recommend execuiting "run_qemu.sh" in the root folder. 
   
 
