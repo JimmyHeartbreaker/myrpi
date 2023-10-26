@@ -5,9 +5,10 @@ Starfield is an app that renders a basic starfield as you move through it.
 
 Helloworld demonstrates some x86 and Arm assembly
 
-Sensorhub is in progress and will be taking data from my arduino over bluetooh and sending it to azure.
+Sensorhub is in progress and will be taking data from my arduino over bluetooh and sending it to azure. A later version of this will deploy Azure IoT Edge to raspberry pi.
 
 Mydriver is for learning how to develop and deploy drivers in linux.
+
 
 # setup
 
