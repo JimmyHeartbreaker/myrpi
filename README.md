@@ -31,6 +31,12 @@ Mydriver is for learning how to develop and deploy drivers in linux.
       source sources/poky/oe-init-build-env qemu-build
   
       bitbake mypi-qemu-image
+- try bitbake rpi-build (for physical deployment)
+      navigate to root folder in terminal
+  
+      source sources/poky/oe-init-build-env rpi-build
+  
+      bitbake mypi-rpi-image
   
 # vscode setup 
 - Install through terminal cmake, cmake-extras, pkg-config, ninja-build, libgtk-3-dev, libgtest-dev, gdb, curl, openssl, libcurl4-openssl-dev, libssl-dev
@@ -42,7 +48,8 @@ Mydriver is for learning how to develop and deploy drivers in linux.
 
 # qemu setup
  - QEMU is included in the recipes and should be built as part of the above steps. Last time i did a fresh install I had some issues with some dependencies that were not on my system - the error logs are clear, just install whatever it says.
+ - To run qemu for this setup i recommend execuiting "run_qemu.sh" in the root folder.
 
-To run qemu for this setup i recommend execuiting "run_qemu.sh" in the root folder. 
+   
   
 
