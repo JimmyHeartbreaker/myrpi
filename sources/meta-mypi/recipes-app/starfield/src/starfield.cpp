@@ -23,7 +23,6 @@ Starfield::Starfield(int nStars) : _starsCount(nStars)
 
 Star& Starfield::GetStar(int starNumber)
 {
-  auto x = std::begin(_stars);
   return _stars[starNumber];
 }
 
