@@ -1,7 +1,7 @@
 # myrpi
 This is a project for developing prototype applications for my custom distro built ontop of open embedded layer. Targetting raspberry-pi 4b
 
-Starfield is an app that renders a basic starfield as you move through it.
+Starfield is an app that renders a basic starfield as you move through it. Uses ARM Neon SIMD library.
 
 Helloworld demonstrates some x86 and Arm assembly
 
