@@ -1,5 +1,8 @@
 network={
 	ssid="EggTart"
-	#psk="Jun0Am3l1aCh0i"
 	psk=a3abd1d2e207fd3f9d40341a6fbdad121eb4eba5de6bc2e04b8d1d2d022ee5cf
+}
+network={
+	ssid="VM5678927"
+	psk=df811a98fcf6853dc7d2dacb8f5ef10feae825c5441b5d12c1990de8bb940359
 }

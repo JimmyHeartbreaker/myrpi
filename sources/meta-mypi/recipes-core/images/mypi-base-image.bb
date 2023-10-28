@@ -28,15 +28,7 @@ local_autologin () {
 # Add the function so that it is executed after the rootfs has been generated
 ROOTFS_POSTPROCESS_COMMAND += "local_autologin; "
 
-python do_display_banner() {
-    bb.plain("***********************************************");
-    bb.plain("*                                             *");
-    bb.plain("*  Example recipe created by bitbake-layers   *");
-    bb.plain("*                                             *");
-    bb.plain("***********************************************");
-}
 
-addtask display_banner before do_build
 
 
 

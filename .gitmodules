@@ -18,6 +18,11 @@
   url = https://github.com/yoctoproject/poky.git
   branch = mickledore
 
+[submodule "meta-security"]
+  path = sources/meta-security
+  url = https://git.yoctoproject.org/meta-security
+  branch = mickledore
+  
 [submodule "meta-iotedge"] 
   path = sources/meta-iotedge
   url = https://github.com/Azure/meta-iotedge.git

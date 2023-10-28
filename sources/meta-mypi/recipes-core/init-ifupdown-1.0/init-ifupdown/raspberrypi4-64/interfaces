@@ -8,7 +8,7 @@ iface lo inet loopback
 auto wlan0
 iface wlan0 inet dhcp
     wireless_mode managed
-    wireless_essid EggTart
+    wireless_essid VM5678927
     wpa-driver nl80211
     wpa-conf /etc/wpa_supplicant.conf
     dns-nameservers 8.8.8.8 1.1.1.1
