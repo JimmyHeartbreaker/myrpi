@@ -71,6 +71,7 @@ sudo ./qemu-build/tmp-glibc/sysroots-components/x86_64/qemu-system-native/usr/bi
 	-device usb-tablet \
 	-device usb-kbd  \
 	-machine virt \
+	-bt hci,host \
 	-cpu cortex-a57 \
 	-smp 4 \
 	-m 512 \

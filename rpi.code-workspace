@@ -19,11 +19,11 @@
 		{
 			"path": "sources/meta-mypi/recipes-app/sensorhub"		,
 			"name": "sensorhub"	
-		},
-		{
-			"path":"sources/meta-mypi/recipes-core/azure-iot-sdk-c",
-			"name": "azure-iot-sdk-c"
-		}
+		}//,
+		// {
+		// 	"path":"sources/meta-mypi/recipes-core/azure-iot-sdk-c",
+		// 	"name": "azure-iot-sdk-c"
+		// }
 	],
 	"settings": {
 		"bitbake.loggingLevel": "info",
