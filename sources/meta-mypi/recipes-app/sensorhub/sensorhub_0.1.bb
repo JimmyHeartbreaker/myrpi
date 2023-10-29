@@ -22,6 +22,6 @@ EXTRA_OECMAKE = " \
                  -DCMAKE_SYSROOT=recipe-sysroot \
                  "
 
-DEPENDS += " googletest curl azure-iot-sdk-c"
+DEPENDS += " googletest curl azure-iot-sdk-c simpleble"
 
 FILESEXTRAPATHS:prepend := "${THISDIR}:"
