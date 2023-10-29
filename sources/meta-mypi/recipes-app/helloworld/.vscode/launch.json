@@ -1,12 +1,14 @@
 {
     "version": "0.2.0",
     "configurations": [
+        
+
         {
-            "name": "(gdb) Launch",
+            "name": "Host",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/Host/helloworld",
-            "args": [],
+            "program": "${workspaceFolder}/build/Host/${workspaceFolderBasename}",
+            "args": ["200"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
@@ -26,31 +28,7 @@
             ]
         },
         {
-            "name": "Test Launch",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/build/Host/helloworld_Tests",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${fileDirname}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                },
-                {
-                    "description": "Set Disassembly Flavor to Intel",
-                    "text": "-gdb-set disassembly-flavor intel",
-                    "ignoreFailures": true
-                }
-            ]
-        },
-        {
-            "name": "debug qemu",
+            "name": "QEMU",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/Target/${workspaceFolderBasename}",
@@ -74,6 +52,29 @@
                 }
             ]
         },
-        
+        {
+            "name": "Test",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/Host/${workspaceFolderBasename}_Tests",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
+        }
     ]
 }
