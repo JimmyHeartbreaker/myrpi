@@ -14,9 +14,9 @@ SRC_URI[sha256sum] = "6e4f3f759f97f0c36eafe249e98de085420a302da725ea4eafbe1eaed8
 S = "${WORKDIR}/git"
 
  
-inherit cmake pkgconfig asdasdadsasd
+inherit cmake pkgconfig
 
-PACKAGE_DEBUG_SPLIT_STYLE = "debug-without-src   "
+PACKAGE_DEBUG_SPLIT_STYLE = "debug-without-src" 
 
 DEPENDS += " util-linux curl "
 
