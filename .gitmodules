@@ -42,8 +42,3 @@
   path = sources/meta-rust
   url = https://github.com/meta-rust/meta-rust.git
   branch = add-mickledore
-
-[submodule "azure-iot-sdk-c"] 
-  path = sources/meta-mypi/recipes-core/azure-iot-sdk-c
-  url = https://github.com/JimmyHeartbreaker/azure-iot-sdk-c.git
-  branch = mypi
