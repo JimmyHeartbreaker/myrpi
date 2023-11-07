@@ -9,6 +9,8 @@ Sensorhub is in progress and will be taking data from my arduino over bluetooh a
 
 Mydriver is for learning how to develop and deploy drivers in linux.
 
+see also my repo for learning about fpga & verilog.
+https://github.com/JimmyHeartbreaker/LearningFPGA
 
 # setup
 
